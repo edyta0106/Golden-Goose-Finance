@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const FinancialData = require("./FinancialData");
 
 const userSchema = new Schema({
   username: {
@@ -19,12 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 12,
   },
-  finances: [
-    {
-        type: Schema.Types.ObjectId,
-        ref: "totalIncome"
-    }
-  ]
+  finances: [FinancialData],
 });
 
 userSchema.pre("save", async function (next) {
@@ -40,6 +36,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model("User", userSchema);
+const User = model("user", userSchema);
 
 module.exports = User;

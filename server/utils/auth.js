@@ -1,4 +1,3 @@
-// create JWT token function
 const jwt = require("jsonwebtoken");
 
 const secret = "creamiest";
