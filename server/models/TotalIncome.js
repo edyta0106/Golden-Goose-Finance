@@ -1,22 +1,22 @@
 const { Schema, model, Types } = require("mongoose");
-const bills = require("./TotalBills");
-const savings = require("./TotalSavings");
-const spending = require("./TotalSpending");
+const Bills = require("./TotalBills");
+const Savings = require("./TotalSavings");
+const Spending = require("./TotalSpending");
 
 const TotalIncomeSchema = new Schema({
   incomeID: {
     type: Schema.Types.ObjectId,
-    defualt: () => new Types.ObjectId(),
+    default: () => new Types.ObjectId(),
   },
   salary: {
     type: Number,
     required: true,
   },
-  bills: [bills],
-  savings: [savings],
-  spending: [spending],
+  bills: [Bills],
+  savings: [Savings],
+  spending: [Spending],
 });
 
 const TotalIncome = model("totalIncome", TotalIncomeSchema);
 
-moduke.exports = TotalIncome;
+module.exports = TotalIncome;
