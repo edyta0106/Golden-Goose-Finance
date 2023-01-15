@@ -1,3 +1,4 @@
 const User = require("./User");
+const FinancialData = require("./FinancialData")
 
-module.export = User;
+module.export = { User, FinancialData };
