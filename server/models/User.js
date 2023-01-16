@@ -31,11 +31,6 @@ const userSchema = new Schema({
     minlength: 12,
   },
   finances: [FinancialData.schema]
-  // finances: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "FinancialData",
-  //   required: true,
-  // }],
 });
 
 userSchema.pre("save", async function (next) {
