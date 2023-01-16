@@ -10,6 +10,6 @@ const TotalSavingsSchema = new Schema({
   },
 });
 
-const TotalSavings = model("totalSavings", TotalSavingsSchema);
+const TotalSavings = model("TotalSavings", TotalSavingsSchema);
 
 module.exports = TotalSavings;
