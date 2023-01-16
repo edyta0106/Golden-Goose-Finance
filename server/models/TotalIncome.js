@@ -9,21 +9,21 @@ const TotalIncomeSchema = new Schema({
     type: Number,
     required: true,
   },
-  bills: {
+  bills: [{
     type: Schema.Types.ObjectId,
     ref: "TotalBills",
     required: true,
-  },
-  savings: {
+  }],
+  savings: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSavings",
     required: true,
-  },
-  spending: {
+  }],
+  spending: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSpending",
     required: true,
-  },
+  }],
 });
 
 const TotalIncome = model("totalIncome", TotalIncomeSchema);
