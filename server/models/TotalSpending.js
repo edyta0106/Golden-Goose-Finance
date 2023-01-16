@@ -19,6 +19,6 @@ const TotalSpendingSchema = new Schema({
   },
 });
 
-const TotalSpending = model("totalSpending", TotalSpendingSchema);
+const TotalSpending = model("TotalSpending", TotalSpendingSchema);
 
 module.exports = TotalSpending;
