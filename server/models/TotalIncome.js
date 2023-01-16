@@ -1,7 +1,4 @@
 const { Schema, model, Types } = require("mongoose");
-const Bills = require("./TotalBills");
-const Savings = require("./TotalSavings");
-const Spending = require("./TotalSpending");
 
 const TotalIncomeSchema = new Schema({
   incomeID: {
@@ -12,9 +9,21 @@ const TotalIncomeSchema = new Schema({
     type: Number,
     required: true,
   },
-  bills: [Bills],
-  savings: [Savings],
-  spending: [Spending],
+  bills: {
+    type: Schema.Types.ObjectId,
+    ref: "TotalBills",
+    required: true,
+  },
+  savings: {
+    type: Schema.Types.ObjectId,
+    ref: "TotalSavings",
+    required: true,
+  },
+  spending: {
+    type: Schema.Types.ObjectId,
+    ref: "TotalSpending",
+    required: true,
+  },
 });
 
 const TotalIncome = model("totalIncome", TotalIncomeSchema);
