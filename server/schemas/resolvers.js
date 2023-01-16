@@ -4,13 +4,9 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          populate: "finances",
-        });
+    user: async () => {
+        const user = await User.find()
         return user;
-      }
     },
   },
   Mutation: {
