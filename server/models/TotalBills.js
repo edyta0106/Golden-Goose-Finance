@@ -27,6 +27,6 @@ const BillSchema = new Schema({
   },
 });
 
-const Bills = model("bills", BillSchema);
+const Bills = model("Bills", BillSchema);
 
 module.exports = Bills;
