@@ -1,4 +1,6 @@
-import PageContainer from "./components/PageContainer"
+import PageContainer from "./components/PageContainer";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
