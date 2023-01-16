@@ -26,6 +26,6 @@ const TotalIncomeSchema = new Schema({
   }],
 });
 
-const TotalIncome = model("totalIncome", TotalIncomeSchema);
+const TotalIncome = model("TotalIncome", TotalIncomeSchema);
 
 module.exports = TotalIncome;

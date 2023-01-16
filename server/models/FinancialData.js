@@ -5,28 +5,28 @@ const FinancialDataSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  bills: {
+  bills: [{
     type: Schema.Types.ObjectId,
     ref: "TotalBills",
     required: true,
-  },
-  savings: {
+  }],
+  savings: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSavings",
     required: true,
-  },
-  spending: {
+  }],
+  spending: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSpending",
     required: true,
-  },
-  income: {
+  }],
+  income: [{
     type: Schema.Types.ObjectId,
     ref: "TotalIncome",
     required: true,
-  },
+  }],
 });
 
-const FinancialData = model("financialData", FinancialDataSchema);
+const FinancialData = model("FinancialData", FinancialDataSchema);
 
 module.exports = FinancialData;
