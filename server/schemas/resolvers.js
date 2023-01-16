@@ -9,8 +9,8 @@ const resolvers = {
         const user = await User.findById(context.user._id).populate({
           populate: "finances",
         });
+        return user;
       }
-      return User.find();
     },
   },
   Mutation: {
@@ -31,8 +31,17 @@ const resolvers = {
 
       return { token, user };
     },
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (
+      parent,
+      { firstName, lastName, username, email, password }
+    ) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        username,
+        email,
+        password,
+      });
       const token = signToken(user);
 
       return { token, user };

@@ -29,11 +29,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 12,
   },
-  finances: {
+  finances: [{
     type: Schema.Types.ObjectId,
     ref: "FinancialData",
     required: true,
-  },
+  }],
 });
 
 userSchema.pre("save", async function (next) {
@@ -49,6 +49,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
