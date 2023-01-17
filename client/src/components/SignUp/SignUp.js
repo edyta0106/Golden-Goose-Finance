@@ -15,15 +15,7 @@ const StyledTextField = styled(TextField)({
 export default function SignUp(props) {
   const [formState, setFormState] = useState({ username: "", email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
-  //try {
-  //   const { data } = await addProfile({
-  //     variables: { ...formState },
-  //   });
 
-  //   Auth.login(data.addProfile.token);
-  // } catch (e) {
-  //   console.error(e);
-  // }
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -90,32 +82,3 @@ export default function SignUp(props) {
     </>
   );
 }
-
-// export default function SignUp() {
-//   const [formState, setFormState] = useState({
-//     userName: "",
-//     email: "",
-//     password: "",
-//   });
-
-//   // const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-
-//     setFormState({
-//       ...formState,
-//       [name]: value,
-//     });
-//   };
-// const handleFormSubmit = async (event) => {
-//   console.log(formState);
-//   event.preventDefault();
-
-//
-//   setFormState({
-//     userName: "",
-//     email: "",
-//     password: "",
-//   });
-// };
