@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useMutation } from "@apollo/client";
-// import { LOGIN_USER } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
 import { Container, TextField, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import { Box } from "@mui/system";
+import Auth from "../../utils/auth";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -12,8 +13,8 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function Login() {
-  const [formState, setFormState] = useState({ username: "", password: "" });
-  // const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,19 +30,19 @@ export default function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    // try {
-    //   const { data } = await login({
-    //     variables: { ...formState },
-    //   });
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
 
-    //   Auth.login(data.login.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
 
     // clear form values
     setFormState({
-      username: "",
+      email: "",
       password: "",
     });
   };
@@ -51,13 +52,13 @@ export default function Login() {
       <Container>
         <Box component="form" onSubmit={handleFormSubmit}>
           <StyledTextField
-            placeholder="Your username"
-            name="username"
-            type="username"
-            value={formState.username}
+            placeholder="Your email"
+            name="email"
+            type="email"
+            value={formState.email}
             onChange={handleChange}
             id="standard-basic"
-            label="username"
+            label="email"
             variant="standard"
           />
           <StyledTextField
