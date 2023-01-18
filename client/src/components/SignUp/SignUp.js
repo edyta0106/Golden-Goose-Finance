@@ -53,6 +53,10 @@ export default function SignUp(props) {
             label="User Name"
             variant="standard"
           />
+
+
+
+          
           <StyledTextField
             onChange={handleChange}
             value={formState.email}
