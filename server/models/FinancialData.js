@@ -8,22 +8,18 @@ const FinancialDataSchema = new Schema({
   bills: [{
     type: Schema.Types.ObjectId,
     ref: "TotalBills",
-    required: true,
   }],
   savings: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSavings",
-    required: true,
   }],
   spending: [{
     type: Schema.Types.ObjectId,
     ref: "TotalSpending",
-    required: true,
   }],
   income: [{
     type: Schema.Types.ObjectId,
     ref: "TotalIncome",
-    required: true,
   }],
 });
 

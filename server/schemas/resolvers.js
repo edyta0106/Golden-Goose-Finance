@@ -5,7 +5,11 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async () => {
-      const user = await User.find();
+      const user = await User.find()
+        .populate("bills")
+        .populate("income")
+        .populate("savings")
+        .populate("spending");
       return user;
     },
   },
@@ -38,14 +42,18 @@ const resolvers = {
 
       return { token, user };
     },
-    addIncome: async (parent, {salary, _id}) => {
+    createIncome: async (parent, _id) => {
+      const income = await TotalIncome.create();
+    },
+    //create total income
+    addIncome: async (parent, { salary, _id }) => {
       const income = await User.findOneAndUpdate(
-        {_id},
-        { $push: {income: salary} },
+        { _id },
+        { $push: { income: salary } },
         { new: true }
       );
-      return income
-    }
+      return income;
+    },
   },
 };
 
