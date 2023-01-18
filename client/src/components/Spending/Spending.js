@@ -74,14 +74,16 @@ export default function reusableForm() {
         >
           $321.45
         </Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            width: "150%",
-          }}
-        >
-          Add Expense
-        </Button>
+        <Link to="/spendingform">
+          <Button
+            variant="outlined"
+            sx={{
+              width: "150%",
+            }}
+          >
+            Add Expense
+          </Button>
+        </Link>
       </Box>
       {/* Individual Bill Container */}
       <Box
