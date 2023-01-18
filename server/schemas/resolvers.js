@@ -51,16 +51,17 @@ const resolvers = {
 
       return income;
     },
-    addIncome: async (parent, { totalIncome }, context) => {
+    addIncome: async (parent, { income }, context) => {
+      console.log(context);
       if (context.user) {
-        const updateUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { income: totalIncome } },
-          { new: true, runValidators: true }
-        );
-        return updateUser;
+        const income = new TotalIncome({ income });
+
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { income: income },
+        });
+
+        return income;
       }
-      throw new AuthenticationError("No one logged in!");
     },
   },
 };
