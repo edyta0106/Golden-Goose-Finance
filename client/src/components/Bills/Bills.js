@@ -3,108 +3,125 @@ import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Button, Typography } from "@mui/material";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 
 export default function Bills() {
   return (
     <>
       <Link to="/bills"></Link>
       {/* Form Container */}
-      <Container
-        sx={{
-          width: "90%",
-          height: "100vh",
-          bgcolor: "#C5C6C7",
-          marginTop: "5%",
-          marginBottom: "5%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          overflow: "scroll",
-        }}
-      >
-        {/* Form Header Text Container */}
-        <Box
+        <Container
           sx={{
-            height: "10%",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: "200%",
-              fontWeight: "bolder",
-              paddingTop: "20%",
-            }}
-          >
-            Bills
-          </Typography>
-        </Box>
-        {/* Form Header Total Amount Container */}
-        <Box
-          sx={{
+            width: "90%",
+            height: "100vh",
+            bgcolor: "#C5C6C7",
+            marginTop: "5%",
+            marginBottom: "5%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            paddingBottom: "7%",
+            overflow: "scroll",
           }}
         >
-          <Typography
+          {/* Back Arrow */}
+          <Box
             sx={{
-              fontSize: "150%",
-              fontWeight: "bolder",
-              paddingTop: "7%",
-              paddingBottom: "15%",
+              width: "105%",
+              display: "flex",
+              justifyContent: "flex-start",
             }}
           >
-            $321.45
-          </Typography>
-          <Button
-            variant="outlined"
+            <Button>
+              <ArrowBack
+                sx={{
+                  fontSize: 40,
+                  color: "black",
+                }}
+              />
+            </Button>
+          </Box>
+          {/* Form Header Text Container */}
+          <Box
             sx={{
-              width: "150%",
+              height: "10%",
             }}
           >
-            Add A Bill
-          </Button>
-        </Box>
-        {/* Individual Bill Container */}
-        <Box
-          sx={{
-            width: "100%",
-            height: "15vh",
-            bgcolor: "#546E7A",
-            color: "white",
-            marginTop: "10px",
-            marginBottom: "10px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            alignContent: "center",
-          }}
-        >
-          <Typography
+            <Typography
+              sx={{
+                fontSize: "200%",
+                fontWeight: "bolder",
+              }}
+            >
+              Bills
+            </Typography>
+          </Box>
+          {/* Form Header Total Amount Container */}
+          <Box
             sx={{
-              fontSize: "130%",
-              fontWeight: "bold",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingBottom: "7%",
             }}
           >
-            Jun. 16th
-          </Typography>
-          <Typography
+            <Typography
+              sx={{
+                fontSize: "150%",
+                fontWeight: "bolder",
+                paddingTop: "7%",
+                paddingBottom: "15%",
+              }}
+            >
+              $321.45
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{
+                width: "150%",
+              }}
+            >
+              Add A Bill
+            </Button>
+          </Box>
+          {/* Individual Bill Container */}
+          <Box
             sx={{
-              fontSize: "150%",
+              width: "100%",
+              height: "15vh",
+              bgcolor: "#546E7A",
+              color: "white",
+              marginTop: "10px",
+              marginBottom: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              alignContent: "center",
             }}
           >
-            Netflix
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "150%",
-            }}
-          >
-            $15.99
-          </Typography>
-        </Box>
-      </Container>
+            <Typography
+              sx={{
+                fontSize: "130%",
+                fontWeight: "bold",
+              }}
+            >
+              Jun. 16th
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "150%",
+              }}
+            >
+              Netflix
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "150%",
+              }}
+            >
+              $15.99
+            </Typography>
+          </Box>
+        </Container>
     </>
   );
 }
