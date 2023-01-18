@@ -23,7 +23,7 @@ const typeDefs = gql`
 
   type TotalIncome {
     _id: ID
-    salary: Int
+    totalIncome: Int
   }
 
   type TotalSavings {
@@ -55,7 +55,7 @@ const typeDefs = gql`
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    createIncome(salary: Int!): TotalIncome
+    createIncome(createIncome: Int!): TotalIncome
   }
 `;
 

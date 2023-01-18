@@ -5,7 +5,7 @@ const TotalIncomeSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  salary: {
+  totalIncome: {
     type: Number,
     required: true,
   },
