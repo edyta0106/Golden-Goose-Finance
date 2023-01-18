@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, TotalIncome, FinancialData } = require("../models");
+const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -42,18 +42,18 @@ const resolvers = {
 
       return { token, user };
     },
-    createIncome: async (parent, _id) => {
-      const income = await TotalIncome.create();
-    },
+    // createIncome: async (parent, _id) => {
+    //   const income = await TotalIncome.create();
+    // },
     //create total income
-    addIncome: async (parent, { salary, _id }) => {
-      const income = await User.findOneAndUpdate(
-        { _id },
-        { $push: { income: salary } },
-        { new: true }
-      );
-      return income;
-    },
+    // addIncome: async (parent, { salary, _id }) => {
+    //   const income = await User.findOneAndUpdate(
+    //     { _id },
+    //     { $push: { income: salary } },
+    //     { new: true }
+    //   );
+    //   return income;
+    // },
   },
 };
 

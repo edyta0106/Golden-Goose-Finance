@@ -9,13 +9,13 @@ const typeDefs = gql`
     finances: [FinancialData]!
   }
 
-  type FinancialData {
-    _id: ID
-    bills: [TotalBills]
-    savings: [TotalSavings]
-    spending: [TotalSpending]
-    income: [TotalIncome]
-  }
+  // type FinancialData {
+  //   _id: ID
+  //   bills: [TotalBills]
+  //   savings: [TotalSavings]
+  //   spending: [TotalSpending]
+  //   income: [TotalIncome]
+  // }
 
   type TotalBills {
     _id: ID
