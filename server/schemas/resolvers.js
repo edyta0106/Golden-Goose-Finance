@@ -42,9 +42,11 @@ const resolvers = {
 
       return { token, user };
     },
-    // createIncome: async (parent, _id) => {
-    //   const income = await TotalIncome.create();
-    // },
+    createIncome: async (parent, args) => {
+      const income = await TotalIncome.create(args);
+
+      return income
+    },
     //create total income
     // addIncome: async (parent, { salary, _id }) => {
     //   const income = await User.findOneAndUpdate(

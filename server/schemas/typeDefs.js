@@ -6,16 +6,11 @@ const typeDefs = gql`
     username: String
     password: String
     email: String
-    finances: [FinancialData]!
+    bills: [TotalBills]
+    savings: [TotalSavings]
+    spending: [TotalSpending]
+    income: [TotalIncome]
   }
-
-  // type FinancialData {
-  //   _id: ID
-  //   bills: [TotalBills]
-  //   savings: [TotalSavings]
-  //   spending: [TotalSpending]
-  //   income: [TotalIncome]
-  // }
 
   type TotalBills {
     _id: ID
@@ -29,9 +24,6 @@ const typeDefs = gql`
   type TotalIncome {
     _id: ID
     salary: Int
-    bills: [TotalBills]
-    savings: [TotalSavings]
-    spending: [TotalSpending]
   }
 
   type TotalSavings {
@@ -63,7 +55,7 @@ const typeDefs = gql`
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addIncome(salary: Int!): TotalIncome
+    createIncome(salary: Int!): TotalIncome
   }
 `;
 
