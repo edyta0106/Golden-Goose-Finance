@@ -4,13 +4,17 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async () => {
-      const user = await User.find()
-        .populate("bills")
-        .populate("income")
-        .populate("savings")
-        .populate("spending");
-      return user;
+    user: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate("bills")
+          .populate("income")
+          .populate("savings")
+          .populate("spending");
+        return user;
+      }
+      throw new AuthenticationError("No one logged in!");
     },
   },
   Mutation: {
@@ -45,7 +49,7 @@ const resolvers = {
     createIncome: async (parent, args) => {
       const income = await TotalIncome.create(args);
 
-      return income
+      return income;
     },
     //create total income
     // addIncome: async (parent, { salary, _id }) => {
