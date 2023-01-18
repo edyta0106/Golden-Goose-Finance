@@ -3,8 +3,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import { Box, Paper, Grid, Container, Button, Typography } from "@mui/material";
+import { Box, Paper, Grid, Container, Button, Typography, Modal, TextField } from "@mui/material";
 import { MdOutlineSavings } from "react-icons/md";
+import { Stack } from "@mui/system";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#FAF9F6",
@@ -28,10 +29,38 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+const StyledModalBox = styled(Paper)({
+  backgroundColor: "#FAF9F6",
+  minHeight: "160px",
+  borderRadius: ".6rem",
+  width: "80%",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+
+  // add paper proper here
+});
+
+const ModalItem = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: ".5rem",
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+const StyledTextField = styled(TextField)({
+  width: "100%",
+});
+
 export default function Dashboard() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <Box sx={{ minHeight: "100vh" }}>
-      <Container sx={{ mt: 5, p: 2, bgcolor: "lightpink" }}>
+      {/* Change bgColor for containers later */}
+      <Container sx={{ mt: 5, p: 2, backgroundColor: "#c1c1c1" }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={9}>
@@ -67,14 +96,30 @@ export default function Dashboard() {
           </Grid>
         </Box>
       </Container>
-      <Container sx={{ mt: 3, p: 3, bgcolor: "lightblue" }}>
+      <Container sx={{ mt: 3, p: 3, backgroundColor: "#c1c1c1" }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
               <StyledBox elevation={4}>
-                <Link to="/">
-                  <Button>Update Total </Button>
-                </Link>
+                <Button onClick={handleOpen}>Update Total</Button>
+                <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                  <StyledModalBox>
+                    <Typography textAlign="center" sx={{ mt: 5 }} id="modal-modal-title" variant="h6" component="h2">
+                      Updated your finances here :
+                    </Typography>
+                    <Stack component="form" spacing={2} sx={{ p: 5 }}>
+                      <ModalItem elevation={24}>
+                        <StyledTextField name="username" type="number" id="standard-basic" label="Total Income" variant="standard" />
+                      </ModalItem>
+                      <Box textAlign="center">
+                        {/* Need to bind click event to handle what happens on form submit */}
+                        <Button onSubmit="" sx={{ mt: 5 }}>
+                          Submit
+                        </Button>
+                      </Box>
+                    </Stack>
+                  </StyledModalBox>
+                </Modal>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
