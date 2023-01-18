@@ -19,9 +19,9 @@ export default function Homepage() {
           alt="Money"
           src={moneyImage}
         />
-        <Typography align="center" variant="h5" component="h1" sx={{ mt: 5, mb: 2 }}>
+        {/* <Typography align="center" variant="h5" component="h1" sx={{ mt: 5, mb: 2 }}>
           Dashboard
-        </Typography>
+        </Typography> */}
         <Typography align="center" component="p">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ex nesciunt, mollitia blanditiis cupiditate, itaque eaque ipsum unde ullam
           dolorum alias expedita perferendis, quia assumenda.
