@@ -86,6 +86,7 @@ export default function Bills() {
         {/* Individual Bill Container */}
         <Box
           sx={{
+            boxShadow: "0px 0px 10px 1px black",
             width: "100%",
             height: "15vh",
             bgcolor: "#546E7A",
