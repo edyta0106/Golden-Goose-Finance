@@ -1,8 +1,10 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, IconButton } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 export default function reusableForm() {
   return (
     // Reusable form container
@@ -72,14 +74,16 @@ export default function reusableForm() {
         >
           $321.45
         </Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            width: "150%",
-          }}
-        >
-          Add Expense
-        </Button>
+        <Link to="/spendingform">
+          <Button
+            variant="outlined"
+            sx={{
+              width: "150%",
+            }}
+          >
+            Add Expense
+          </Button>
+        </Link>
       </Box>
       {/* Individual Bill Container */}
       <Box
@@ -120,6 +124,9 @@ export default function reusableForm() {
         >
           $204.59
         </Typography>
+        <IconButton edge="end" aria-label="delete">
+          <DeleteIcon sx={{ color: "white" }} />
+        </IconButton>
       </Box>
     </Container>
   );
