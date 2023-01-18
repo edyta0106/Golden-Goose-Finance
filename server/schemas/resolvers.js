@@ -51,15 +51,14 @@ const resolvers = {
 
       return income;
     },
-    //create total income
-    // addIncome: async (parent, { salary, _id }) => {
-    //   const income = await User.findOneAndUpdate(
-    //     { _id },
-    //     { $push: { income: salary } },
-    //     { new: true }
-    //   );
-    //   return income;
-    // },
+    addIncome: async (parent, args) => {
+      const income = await User.findOneAndUpdate(
+        { _id },
+        { $push: { income: salary } },
+        { new: true }
+      );
+      return income;
+    },
   },
 };
 
