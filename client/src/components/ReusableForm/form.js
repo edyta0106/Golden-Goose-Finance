@@ -9,6 +9,7 @@ export default function reusableForm() {
   return (
     <Container
       sx={{
+        borderRadius: "10px",
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
@@ -45,7 +46,7 @@ export default function reusableForm() {
       >
         <Typography
           sx={{
-            fontSize: "200%",
+            fontSize: "300%",
             fontWeight: "bolder",
           }}
         >
@@ -59,6 +60,7 @@ export default function reusableForm() {
           flexDirection: "column",
           alignItems: "center",
           paddingBottom: "7%",
+          paddingTop: "7%",
         }}
       >
         <Typography
@@ -83,6 +85,7 @@ export default function reusableForm() {
       {/* Individual Bill Container */}
       <Box
         sx={{
+          borderRadius: "10px",
           boxShadow: "2px 2px 10px black",
           width: "100%",
           height: "15vh",
