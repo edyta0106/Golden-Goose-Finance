@@ -54,9 +54,6 @@ export default function SignUp(props) {
             variant="standard"
           />
 
-
-
-          
           <StyledTextField
             onChange={handleChange}
             value={formState.email}
