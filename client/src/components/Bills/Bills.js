@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import { fontSize, fontWeight } from "@mui/system";
+import { Button, Typography } from "@mui/material";
 
 export default function Bills() {
   return (
@@ -15,8 +14,8 @@ export default function Bills() {
           width: "90%",
           height: "100vh",
           bgcolor: "#C5C6C7",
-          marginTop: "20px",
-          marginBottom: "20px",
+          marginTop: "5%",
+          marginBottom: "5%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -40,16 +39,32 @@ export default function Bills() {
           </Typography>
         </Box>
         {/* Form Header Total Amount Container */}
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            paddingBottom: "7%",
+          }}
+        >
           <Typography
             sx={{
               fontSize: "150%",
               fontWeight: "bolder",
-              paddingTop: "25%",
+              paddingTop: "7%",
+              paddingBottom: "15%",
             }}
           >
             $321.45
           </Typography>
+          <Button
+            variant="outlined"
+            sx={{
+              width: "150%",
+            }}
+          >
+            Add A Bill
+          </Button>
         </Box>
         {/* Individual Bill Container */}
         <Box
@@ -63,7 +78,7 @@ export default function Bills() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-around",
-            alignContent: "center"
+            alignContent: "center",
           }}
         >
           <Typography
