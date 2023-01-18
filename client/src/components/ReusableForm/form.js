@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import { Button, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
-export default function reusableForm() {
+export default function ReusableForm() {
   return (
     // Reusable form container
     <Container
