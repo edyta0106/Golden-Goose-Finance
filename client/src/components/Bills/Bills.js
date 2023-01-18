@@ -84,14 +84,16 @@ export default function Bills() {
         >
           $321.45
         </Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            width: "150%",
-          }}
-        >
-          Add A Bill
-        </Button>
+        <Link to="/billsform">
+          <Button
+            variant="outlined"
+            sx={{
+              width: "150%",
+            }}
+          >
+            Add A Bill
+          </Button>
+        </Link>
       </Box>
       {/* Individual Bill Container */}
       <Box
