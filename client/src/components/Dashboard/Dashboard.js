@@ -72,17 +72,31 @@ export default function Dashboard() {
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
               <StyledBox elevation={4}>
-                <Typography>Test</Typography>
+                <Link to="/">
+                  <Button>Update Total </Button>
+                </Link>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>Box 1</StyledBox>
+              <StyledBox elevation={4}>
+                <Link to="/spending">
+                  <Button>Spending</Button>
+                </Link>
+              </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>Box 1</StyledBox>
+              <StyledBox elevation={4}>
+                <Link to="/bills">
+                  <Button>Bills</Button>
+                </Link>
+              </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>Box 1</StyledBox>
+              <StyledBox elevation={4}>
+                <Link to="/savings">
+                  <Button>Savings</Button>
+                </Link>
+              </StyledBox>
             </Grid>
           </Grid>
         </Box>

@@ -4,7 +4,6 @@ import Container from "@mui/material/Container";
 import { Button, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
-
 export default function reusableForm() {
   return (
     // Reusable form container
@@ -39,6 +38,7 @@ export default function reusableForm() {
           />
         </Button>
       </Box>
+
       {/* Form Header Text Container */}
       <Box
         sx={{
@@ -54,6 +54,7 @@ export default function reusableForm() {
           Bills
         </Typography>
       </Box>
+
       {/* Form Header Total Amount Container */}
       <Box
         sx={{
@@ -74,6 +75,7 @@ export default function reusableForm() {
         >
           $321.45
         </Typography>
+
         <Button
           variant="outlined"
           sx={{
@@ -83,6 +85,7 @@ export default function reusableForm() {
           Add A Bill
         </Button>
       </Box>
+
       {/* Individual Bill Container */}
       <Box
         sx={{
