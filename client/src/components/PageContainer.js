@@ -23,10 +23,10 @@ export default function PageContainer() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/bills" element={<Bills />} />
-        <Route exact path="/billsform" element={<Bills />} />
+        <Route exact path="/billsform" element={<BillsForm />} />
         <Route exact path="/savings" element={<Savings />} />
         <Route exact path="/spending" element={<Spending />} />
-        <Route exact path="/spendingform" element={<Spending />} />
+        <Route exact path="/spendingform" element={<SpendingForm />} />
         <Route exact path="/savingsform" element={<SavingsForm />} />
       </Routes>
       <Footer />

@@ -48,9 +48,11 @@ export default function BillsForm() {
             label="Category Type"
             variant="standard"
           />
-          <Box sx={{ textAlign: "center" }}>
-            <Button>Submit</Button>
-          </Box>
+          <Link to="/bills">
+            <Box sx={{ textAlign: "center" }}>
+              <Button>Submit</Button>
+            </Box>
+          </Link>
         </Box>
       </Container>
     </>
