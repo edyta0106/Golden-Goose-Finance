@@ -17,9 +17,11 @@ export default function Savings() {
         </Typography>
 
         {/* dayjs().format(MM/DD/YYYY) */}
-        <Box />
+
         <Box textAlign="center" sx={{ p: 2, border: "3px solid black" }}>
-          <Button type="submit">Set a New Goal</Button>
+          <Link to="/savingsform">
+            <Button type="submit">Set a New Goal</Button>
+          </Link>
         </Box>
       </Container>
     </>

@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Bills from "./Bills/Bills";
 import Savings from "./Savings/Savings";
 import Spending from "./Spending/Spending";
+import SavingsForm from "./Savings/SavingsForm";
 
 export default function PageContainer() {
   return (
@@ -22,6 +23,7 @@ export default function PageContainer() {
         <Route exact path="/bills" element={<Bills />} />
         <Route exact path="/savings" element={<Savings />} />
         <Route exact path="/spending" element={<Spending />} />
+        <Route exact path="/savingsform" element={<SavingsForm />} />
       </Routes>
       <Footer />
     </>
