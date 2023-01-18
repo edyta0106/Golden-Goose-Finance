@@ -9,46 +9,46 @@ const StyledTextField = styled(TextField)({
   marginTop: "1.2rem",
 });
 
-export default function SavingsForm() {
+export default function BillsForm() {
   //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
   return (
     <>
-      <Link to="/savingsform"></Link>
+      <Link to="/billsform"></Link>
       <Container>
         <Box component="form" onSubmit="">
           <StyledTextField
-            name="goalname"
+            name="billname"
             type="text"
             id="standard-basic"
-            label="Goal Name"
+            label="Bill Name"
             variant="standard"
           />
           <StyledTextField
-            name="goalamount"
+            name="billamount"
             type="number"
             step="10"
             id="standard-basic"
-            label="Goal Amount"
+            label="Bill Amount"
             variant="standard"
           />
           <StyledTextField
-            name="goallength"
+            name="duedate"
             type="text"
             id="standard-basic"
-            label="Goal Length"
+            label="Due Date"
             variant="standard"
           />
           <StyledTextField
-            name="goaldescription"
+            name="category"
             type="textarea"
             id="standard-basic"
             multiline
             rows={2}
             maxRows={4}
-            label="Goal Description"
+            label="Category Type"
             variant="standard"
           />
-          <Link to="/savings">
+          <Link to="/bills">
             <Box sx={{ textAlign: "center" }}>
               <Button>Submit</Button>
             </Box>
