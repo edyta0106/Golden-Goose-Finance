@@ -3,15 +3,9 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type User {
     _id: ID
-
     username: String
     password: String
     email: String
-    finances: [FinancialData]!
-  }
-
-  type FinancialData {
-    _id: ID
     bills: [TotalBills]
     savings: [TotalSavings]
     spending: [TotalSpending]
@@ -29,10 +23,7 @@ const typeDefs = gql`
 
   type TotalIncome {
     _id: ID
-    salary: Int
-    bills: [TotalBills]
-    savings: [TotalSavings]
-    spending: [TotalSpending]
+    totalIncome: Int
   }
 
   type TotalSavings {
@@ -64,6 +55,8 @@ const typeDefs = gql`
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
+    createIncome(totalIncome: Int!): TotalIncome
+    addIncome(income: Int): User
   }
 `;
 

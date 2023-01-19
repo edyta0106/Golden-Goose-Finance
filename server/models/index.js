@@ -1,4 +1,4 @@
 const User = require("./User");
-const FinancialData = require("./FinancialData")
+const TotalIncome = require("./TotalIncome")
 
-module.exports = { User, FinancialData };
+module.exports = { User, TotalIncome };

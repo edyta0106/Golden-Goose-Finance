@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const FinancialData = require("./FinancialData");
 
 const userSchema = new Schema({
   username: {
@@ -20,7 +19,30 @@ const userSchema = new Schema({
     required: true,
     minlength: 12,
   },
-  finances: [FinancialData.schema],
+  bills: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TotalBills",
+    },
+  ],
+  savings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TotalSavings",
+    },
+  ],
+  spending: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TotalSpending",
+    },
+  ],
+  income: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TotalIncome",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
