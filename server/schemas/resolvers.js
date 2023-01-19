@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, TotalIncome } = require("../models");
+const { User} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -46,18 +46,12 @@ const resolvers = {
 
       return { token, user };
     },
-    createIncome: async (parent, args) => {
-      const income = await TotalIncome.create(args);
-
-      return income;
-    },
     addIncome: async (parent, { income }, context) => {
-        const newIncome = new TotalIncome({ income });
-      console.log(context);
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { income: newIncome },
+      console.log(context.user);
+      console.log(income);
+        return await User.findByIdAndUpdate(context.user._id, {
+          $set: { income: income },
         });
-        return newIncome;
       }
     },
 };

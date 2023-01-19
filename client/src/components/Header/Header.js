@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,7 +48,11 @@ export default function ButtonAppBar() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to="/dashboard">
+              Dashboard
+              </Link>
+            </MenuItem>
             <MenuItem onClick={handleClose}>About Us</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
           </Menu>
