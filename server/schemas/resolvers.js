@@ -53,7 +53,13 @@ const resolvers = {
           $set: { income: income },
         });
     },
-    addBill: async (parent, { billName, billAmount, dueDate })
+    addBill: async (parent, { billName, billAmount, dueDate }) => {
+      const bill = await TotalBills.create({ billName, billAmount, dueDate });
+
+      return await User.findByIdAndUpdate(context.user._id, {
+        $push: { bill: bill },
+      });
+    }
     },
 };
 
