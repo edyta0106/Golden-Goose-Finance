@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { textAlign } from "@mui/system";
-import { Container, Button, Typography, IconButton, List, ListItem, ListItemText, Grid, Box } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FontAwesomeIcon from "@mui/icons-material/Delete";
+import { Container, Button, Typography, Box } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
+import SavingsCard from "./SavingsCard";
+import dummy from "./DummyData";
 
 // const dayjs = require("dayjs");
 
@@ -76,63 +75,9 @@ export default function Savings() {
           </Button>
         </Link>
       </Box>
-
-      <Box
-        secondaryAction={
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        }
-        sx={{
-          borderRadius: "10px",
-          boxShadow: "2px 2px 10px black",
-          width: "100%",
-          height: "15vh",
-          bgcolor: "#546E7A",
-          color: "white",
-          marginTop: "10px",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          alignContent: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "150%",
-            fontWeight: "bold",
-          }}
-        >
-          Complete within: 6 months
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "130%",
-          }}
-        >
-          Family Vacation to Fiji
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "130%",
-          }}
-        >
-          Description - will go below
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "130%",
-          }}
-        >
-          $9,000
-        </Typography>
-
-        <IconButton edge="end" aria-label="delete">
-          {/* <DeleteIcon sx={{ color: "white" }} /> */}
-          <FontAwesomeIcon icon="fa-regular fa-square-check" />
-        </IconButton>
-      </Box>
+      {dummy.map((goals) => (
+        <SavingsCard key={goals._id} name={goals.name} amount={goals.amount} length={goals.length} description={goals.description} />
+      ))}
     </Container>
   );
 }
