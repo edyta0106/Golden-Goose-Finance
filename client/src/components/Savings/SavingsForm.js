@@ -28,8 +28,9 @@ export default function SavingsForm() {
             label="Goal Description"
             variant="standard"
           />
-          <Link to="/savings">
-            <Box sx={{ textAlign: "center" }}>
+
+          <Box sx={{ textAlign: "center" }}>
+            <Link to="/savings">
               <Button
                 variant="outlined"
                 sx={{
@@ -41,8 +42,8 @@ export default function SavingsForm() {
               >
                 Submit
               </Button>
-            </Box>
-          </Link>
+            </Link>
+          </Box>
         </Box>
       </Container>
     </>

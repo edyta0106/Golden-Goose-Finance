@@ -14,7 +14,7 @@ export default function reusableForm() {
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
-        bgcolor: "#C5C6C7",
+        bgcolor: "#EF9A9A",
         marginTop: "5%",
         marginBottom: "5%",
         display: "flex",
