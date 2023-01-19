@@ -19,6 +19,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 12,
   },
+  income: {
+    type: Number,
+  },
   bills: [
     {
       type: Schema.Types.ObjectId,
@@ -37,12 +40,12 @@ const userSchema = new Schema({
       ref: "TotalSpending",
     },
   ],
-  income: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "TotalIncome",
-    },
-  ],
+  // income: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "TotalIncome",
+  //   },
+  // ],
 });
 
 userSchema.pre("save", async function (next) {

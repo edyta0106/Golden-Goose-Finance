@@ -9,7 +9,7 @@ const typeDefs = gql`
     bills: [TotalBills]
     savings: [TotalSavings]
     spending: [TotalSpending]
-    income: [TotalIncome]
+    income: Int
   }
 
   type TotalBills {
@@ -19,11 +19,6 @@ const typeDefs = gql`
     billDueDate: Int
     billCadence: String
     billCategory: String
-  }
-
-  type TotalIncome {
-    _id: ID
-    totalIncome: Int
   }
 
   type TotalSavings {
@@ -56,7 +51,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     createIncome(totalIncome: Int!): TotalIncome
-    addIncome(income: [ID]): User
+    addIncome(income: Int): User
   }
 `;
 
