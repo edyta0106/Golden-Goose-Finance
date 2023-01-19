@@ -13,31 +13,11 @@ export default function BillsForm() {
   //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
   return (
     <>
-      <Link to="/billsform"></Link>
       <Container>
         <Box component="form" onSubmit="">
-          <StyledTextField
-            name="billname"
-            type="text"
-            id="standard-basic"
-            label="Bill Name"
-            variant="standard"
-          />
-          <StyledTextField
-            name="billamount"
-            type="number"
-            step="10"
-            id="standard-basic"
-            label="Bill Amount"
-            variant="standard"
-          />
-          <StyledTextField
-            name="duedate"
-            type="text"
-            id="standard-basic"
-            label="Due Date"
-            variant="standard"
-          />
+          <StyledTextField name="billname" type="text" id="standard-basic" label="Bill Name" variant="standard" />
+          <StyledTextField name="billamount" type="number" step="10" id="standard-basic" label="Bill Amount" variant="standard" />
+          <StyledTextField name="duedate" type="text" id="standard-basic" label="Due Date" variant="standard" />
           <StyledTextField
             name="category"
             type="textarea"
@@ -50,7 +30,17 @@ export default function BillsForm() {
           />
           <Link to="/bills">
             <Box sx={{ textAlign: "center" }}>
-              <Button>Submit</Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  my: 5,
+                  bgcolor: "gray",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                Submit
+              </Button>
             </Box>
           </Link>
         </Box>
