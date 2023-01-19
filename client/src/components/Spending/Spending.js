@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, Container, IconButton, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
+import SpendingCard from "./SpendingCard";
+import dummy from "./DummySpending";
 
 export default function reusableForm() {
   return (
@@ -90,8 +91,11 @@ export default function reusableForm() {
           </Button>
         </Link>
       </Box>
+      {dummy.map((expenses) => (
+        <SpendingCard key={expenses.id} name={expenses.name} cost={expenses.cost} />
+      ))}
 
-      <Box
+      {/* <Box
         sx={{
           borderRadius: "10px",
           boxShadow: "2px 2px 10px black",
@@ -109,14 +113,6 @@ export default function reusableForm() {
       >
         <Typography
           sx={{
-            fontSize: "130%",
-            fontWeight: "bold",
-          }}
-        >
-          Jun. 15th
-        </Typography>
-        <Typography
-          sx={{
             fontSize: "150%",
           }}
         >
@@ -132,7 +128,7 @@ export default function reusableForm() {
         <IconButton edge="end" aria-label="delete">
           <DeleteIcon sx={{ color: "white" }} />
         </IconButton>
-      </Box>
+      </Box> */}
     </Container>
   );
 }
