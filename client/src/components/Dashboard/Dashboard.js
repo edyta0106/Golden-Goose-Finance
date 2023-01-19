@@ -77,32 +77,33 @@ export default function Dashboard() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await addIncome({
-        variables: {
-          ...formState,
-          usersIncome: Auth.getToken().data._id,
-        },
-      });
-      setFormState("");
-    } catch (err) {
-      console.error(err);
-    }
     // try {
-    //   const mutationResponse = await addIncome({
+    //   const { data } = await addIncome({
     //     variables: {
     //       ...formState,
+    //       userIncomeID: Auth.getToken().data.id_token,
     //     },
     //   });
-    //   const token = mutationResponse.data.addIncome.token;
-    //   Auth.getToken(token);
-    // } catch (error) {
-    //   console.log(JSON.stringify(error));
+    //   setFormState("");
+    // } catch (err) {
+    //   console.error(err);
     // }
+    try {
+      const mutationResponse = await addIncome({
+        variables: {
+          ...formState,
+        },
+      });
+      const token = mutationResponse.income.token;
+      Auth.getToken(token);
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(value);
     setFormState({
       ...formState,
       [name]: value,
@@ -189,7 +190,8 @@ export default function Dashboard() {
                     <Stack component="form" spacing={2} sx={{ p: 5 }}>
                       <ModalItem elevation={24}>
                         <StyledTextField
-                        onChange={handleChange}
+                          onChange={handleChange}
+                          value={formState.income}
                           name="income"
                           type="number"
                           id="standard-basic"
@@ -199,7 +201,11 @@ export default function Dashboard() {
                       </ModalItem>
                       <Box textAlign="center">
                         {/* Need to bind click event to handle what happens on form submit */}
-                        <Button onSubmit={handleFormSubmit} type="submit" sx={{ mt: 5 }}>
+                        <Button
+                          onSubmit={handleFormSubmit}
+                          type="submit"
+                          sx={{ mt: 5 }}
+                        >
                           Submit
                         </Button>
                       </Box>
