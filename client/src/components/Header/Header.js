@@ -7,9 +7,15 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 export default function ButtonAppBar() {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -39,23 +45,59 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem onClick={handleClose}>
-              <Link to="/dashboard">
-              Dashboard
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>About Us</MenuItem>
-            <MenuItem onClick={handleClose}>Settings</MenuItem>
-          </Menu>
+
+          {Auth.loggedIn() !== true ? (
+            <>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>
+                  <Link to="/signup">Sign Up</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/login">Log In</Link>
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>
+                  <Link to="/dashboard">Dashboard</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/bills">Bills</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/spending">Spending</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/savings">Savings</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {/* Create route to link this button */}
+                  <Link to="/settings">Settings</Link>
+                </MenuItem>
+                <MenuItem>
+                  <LogoutIcon onClick={logout} />
+                </MenuItem>
+              </Menu>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
