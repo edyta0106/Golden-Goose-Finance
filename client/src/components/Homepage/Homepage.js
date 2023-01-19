@@ -1,5 +1,5 @@
 import React from "react";
-import moneyImage from "../images/hero-img-1.jpg";
+// import moneyImage from "../images/hero-img-1.jpg";
 import { Link } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
@@ -17,7 +17,7 @@ export default function Homepage() {
             // maxWidth: { xs: 320, md: 250 },
           }}
           alt="Money"
-          src={moneyImage}
+          // src={moneyImage}
         />
         {/* <Typography align="center" variant="h5" component="h1" sx={{ mt: 5, mb: 2 }}>
           Dashboard
