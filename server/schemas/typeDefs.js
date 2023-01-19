@@ -16,9 +16,7 @@ const typeDefs = gql`
     _id: ID
     billName: String
     billAmount: Int
-    billDueDate: Int
-    billCadence: String
-    billCategory: String
+    dueDate: String
   }
 
   type TotalSavings {
@@ -51,6 +49,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
+    addBill(billName: String!, billAmount: Int!, dueDate: String!): TotalBills
   }
 `;
 
