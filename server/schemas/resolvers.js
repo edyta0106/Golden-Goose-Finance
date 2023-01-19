@@ -49,10 +49,9 @@ const resolvers = {
     addIncome: async (parent, { income }, context) => {
       console.log(context.user);
       console.log(income);
-        await User.findByIdAndUpdate(context.user._id, {
+        return await User.findByIdAndUpdate(context.user._id, {
           $set: { income: income },
         });
-        return income;
       }
     },
 };
