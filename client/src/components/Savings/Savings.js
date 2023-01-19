@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { textAlign } from "@mui/system";
-import { Box, Button, Container, IconButton, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FontAwesomeIcon from "@mui/icons-material/Delete";
+import { Box, Button, Container, Typography } from "@mui/material";
+
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SavingsCard from "./SavingsCard";
 import dummy from "./DummyData";

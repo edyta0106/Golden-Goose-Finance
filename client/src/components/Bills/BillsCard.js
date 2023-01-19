@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function BillsCard({ name, amount, duedate }) {
+export default function BillsCard({ name, amount, dueDate }) {
   return (
     <Box
       sx={{
@@ -26,7 +26,7 @@ export default function BillsCard({ name, amount, duedate }) {
           fontWeight: "bold",
         }}
       >
-        {duedate}
+        {dueDate}
       </Typography>
       <Typography
         sx={{
