@@ -17,7 +17,6 @@ export default function SpendingForm() {
         <Box component="form" onSubmit="">
           <StyledTextField name="expenseName" type="text" id="standard-basic" label="Expense Name" variant="standard" />
           <StyledTextField name="expenseCost" type="number" step="10" id="standard-basic" label="Expense Amount" variant="standard" />
-          <StyledTextField name="expenseCategory" type="text" id="standard-basic" label="Expense Category" variant="standard" />
           <Link to="/spending">
             <Box sx={{ textAlign: "center" }}>
               <Button
