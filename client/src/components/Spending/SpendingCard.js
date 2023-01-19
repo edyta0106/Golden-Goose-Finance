@@ -1,9 +1,8 @@
 import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import DoneIcon from "@mui/icons-material/Done";
 
-export default function SavingsCard({ name, amount, length, description }) {
+export default function SpendingCard({ name, cost }) {
   return (
     <Box
       sx={{
@@ -24,35 +23,19 @@ export default function SavingsCard({ name, amount, length, description }) {
       <Typography
         sx={{
           fontSize: "150%",
-          fontWeight: "bold",
-        }}
-      >
-        Complete within: {length} months
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "130%",
         }}
       >
         {name}
       </Typography>
       <Typography
         sx={{
-          fontSize: "130%",
+          fontSize: "150%",
         }}
       >
-        Description: {description}
+        {cost}
       </Typography>
-      <Typography
-        sx={{
-          fontSize: "130%",
-        }}
-      >
-        {amount}
-      </Typography>
-
       <IconButton edge="end" aria-label="delete">
-        <DoneIcon sx={{ color: "white" }} />
+        <DeleteIcon sx={{ color: "white" }} />
       </IconButton>
     </Box>
   );
