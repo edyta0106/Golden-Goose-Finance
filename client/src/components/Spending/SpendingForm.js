@@ -13,22 +13,11 @@ export default function SpendingForm() {
   //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
   return (
     <>
-      {/* <Link to="/spendingform"></Link> */}
       <Container>
         <Box component="form" onSubmit="">
-          <StyledTextField name="goalname" type="text" id="standard-basic" label="Goal Name" variant="standard" />
-          <StyledTextField name="goalamount" type="number" step="10" id="standard-basic" label="Goal Amount" variant="standard" />
-          <StyledTextField name="goallength" type="text" id="standard-basic" label="Goal Length" variant="standard" />
-          <StyledTextField
-            name="goaldescription"
-            type="textarea"
-            id="standard-basic"
-            multiline
-            rows={2}
-            maxRows={4}
-            label="Goal Description"
-            variant="standard"
-          />
+          <StyledTextField name="expenseName" type="text" id="standard-basic" label="Expense Name" variant="standard" />
+          <StyledTextField name="expenseCost" type="number" step="10" id="standard-basic" label="Expense Amount" variant="standard" />
+          <StyledTextField name="expenseCategory" type="text" id="standard-basic" label="Expense Category" variant="standard" />
           <Link to="/spending">
             <Box sx={{ textAlign: "center" }}>
               <Button>Submit</Button>
