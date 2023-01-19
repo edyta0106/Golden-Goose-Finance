@@ -1,10 +1,6 @@
 const { Schema, model, Types } = require("mongoose");
 
 const TotalIncomeSchema = new Schema({
-  incomeID: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
   totalIncome: {
     type: Number,
     required: true,

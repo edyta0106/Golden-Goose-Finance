@@ -52,7 +52,7 @@ const resolvers = {
       return income;
     },
     addIncome: async (parent, { income }, context) => {
-        const newIncome = new TotalIncome({ income });
+        const newIncome = await TotalIncome({ income });
       console.log(context);
         await User.findByIdAndUpdate(context.user._id, {
           $push: { income: newIncome },
