@@ -73,17 +73,24 @@ export default function Dashboard() {
   const [formState, setFormState] = useState({
     income: "",
   });
-  const [addIncome] = useMutation(ADD_INCOME);
+  const [addIncome, { error }] = useMutation(ADD_INCOME);
+  if (error) {
+    console.log(JSON.stringify(error));
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log("handleFormSubmit");
     try {
       const { data } = await addIncome({
         variables: {
-          formState,
-          user: Auth.getProfile().data.income
+          income: parseInt(formState.income),
+          user: Auth.getProfile().data.username,
         },
       });
+      console.log(data);
+      setFormState({income: ""});
+      handleClose()
     } catch (err) {
       console.error(err);
     }
@@ -186,7 +193,7 @@ export default function Dashboard() {
                     >
                       Updated your finances here :
                     </Typography>
-                    <Stack component="form" spacing={2} sx={{ p: 5 }}>
+                    <Box component="form" spacing={2} sx={{ p: 5 }}>
                       <ModalItem elevation={24}>
                         <StyledTextField
                           onChange={handleChange}
@@ -201,17 +208,16 @@ export default function Dashboard() {
                       <Box textAlign="center">
                         {/* Need to bind click event to handle what happens on form submit */}
                         <Button
-                          onSubmit={handleFormSubmit}
-                          type="submit"
+                          onClick={handleFormSubmit}
+                          type="button"
                           sx={{ mt: 5 }}
                         >
                           Submit
                         </Button>
                       </Box>
-                    </Stack>
+                    </Box>
                   </StyledModalBox>
                 </Modal>
-                -{" "}
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
