@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 
 export default function SavingsCard({ name, amount, length, description }) {
