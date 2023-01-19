@@ -5,8 +5,17 @@ const TotalSavingsSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  totalSavings: {
+  goalAmount: {
     type: Number,
+  },
+  goalName: {
+    type: String,
+  },
+  goalLength: {
+    type: String,
+  },
+  goalDescription: {
+    type: String,
   },
 });
 

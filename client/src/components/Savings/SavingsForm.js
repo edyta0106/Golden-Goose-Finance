@@ -10,36 +10,17 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
-  //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
+  //   const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
   return (
     <>
       <Link to="/savingsform"></Link>
       <Container>
         <Box component="form" onSubmit="">
+          <StyledTextField name="goalName" type="text" id="standard-basic" label="Goal Name" variant="standard" />
+          <StyledTextField name="goalAmount" type="number" step="10" id="standard-basic" label="Goal Amount" variant="standard" />
+          <StyledTextField name="goalLength" type="text" id="standard-basic" label="Goal Length" variant="standard" />
           <StyledTextField
-            name="goalname"
-            type="text"
-            id="standard-basic"
-            label="Goal Name"
-            variant="standard"
-          />
-          <StyledTextField
-            name="goalamount"
-            type="number"
-            step="10"
-            id="standard-basic"
-            label="Goal Amount"
-            variant="standard"
-          />
-          <StyledTextField
-            name="goallength"
-            type="text"
-            id="standard-basic"
-            label="Goal Length"
-            variant="standard"
-          />
-          <StyledTextField
-            name="goaldescription"
+            name="goalDescription"
             type="textarea"
             id="standard-basic"
             multiline
