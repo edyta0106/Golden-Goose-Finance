@@ -50,7 +50,6 @@ const typeDefs = gql`
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    createIncome(totalIncome: Int!): TotalIncome
     addIncome(income: Int): User
   }
 `;
