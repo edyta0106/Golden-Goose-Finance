@@ -80,7 +80,7 @@ export default function Dashboard() {
     try {
       const { data } = await addIncome({
         variables: {
-          // totalIncome,
+          ...formState,
           usersIncome: Auth.getToken().data._id,
         },
       });
@@ -189,7 +189,8 @@ export default function Dashboard() {
                     <Stack component="form" spacing={2} sx={{ p: 5 }}>
                       <ModalItem elevation={24}>
                         <StyledTextField
-                          name="username"
+                        onChange={handleChange}
+                          name="income"
                           type="number"
                           id="standard-basic"
                           label="Total Income"
@@ -198,7 +199,7 @@ export default function Dashboard() {
                       </ModalItem>
                       <Box textAlign="center">
                         {/* Need to bind click event to handle what happens on form submit */}
-                        <Button onSubmit="" sx={{ mt: 5 }}>
+                        <Button onSubmit={handleFormSubmit} type="submit" sx={{ mt: 5 }}>
                           Submit
                         </Button>
                       </Box>
