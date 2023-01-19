@@ -71,16 +71,16 @@ export default function Login() {
             label="password"
             variant="standard"
           />
+          {error ? (
+            <div>
+              <p className="error-text">
+                The provided credentials are incorrect
+              </p>
+            </div>
+          ) : null}
           <Box textAlign="center">
             <Button type="submit" sx={{ mt: 5, border: 1 }}>
-              <Link
-              to="/dashboard">
-                <Typography
-                sx={{
-                  textDecoration: "none"
-                }}
-                >Login</Typography>
-                </Link>
+              Login
             </Button>
           </Box>
         </Box>
