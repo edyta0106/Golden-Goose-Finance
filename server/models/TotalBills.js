@@ -17,14 +17,14 @@ const BillSchema = new Schema({
     type: String,
     required: true,
   },
-  billType: {
-    type: String,
-    required: true,
-  },
-  billCategory: {
-    type: String,
-    required: true,
-  },
+  // billType: {
+  //   type: String,
+  //   required: true,
+  // },
+  // billCategory: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const Bills = model("Bills", BillSchema);

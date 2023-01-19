@@ -52,7 +52,8 @@ const resolvers = {
         return await User.findByIdAndUpdate(context.user._id, {
           $set: { income: income },
         });
-      }
+    },
+    
     },
 };
 
