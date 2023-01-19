@@ -20,7 +20,17 @@ export default function SpendingForm() {
           <StyledTextField name="expenseCategory" type="text" id="standard-basic" label="Expense Category" variant="standard" />
           <Link to="/spending">
             <Box sx={{ textAlign: "center" }}>
-              <Button>Submit</Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  my: 5,
+                  bgcolor: "gray",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                Submit
+              </Button>
             </Box>
           </Link>
         </Box>

@@ -13,7 +13,6 @@ export default function SavingsForm() {
   //   const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
   return (
     <>
-      <Link to="/savingsform"></Link>
       <Container>
         <Box component="form" onSubmit="">
           <StyledTextField name="goalName" type="text" id="standard-basic" label="Goal Name" variant="standard" />
@@ -31,7 +30,17 @@ export default function SavingsForm() {
           />
           <Link to="/savings">
             <Box sx={{ textAlign: "center" }}>
-              <Button>Submit</Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  my: 5,
+                  bgcolor: "gray",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                Submit
+              </Button>
             </Box>
           </Link>
         </Box>

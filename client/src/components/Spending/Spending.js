@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Button, Typography, IconButton } from "@mui/material";
-import ArrowBack from "@mui/icons-material/ArrowBack";
+import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 
 export default function reusableForm() {
   return (
@@ -31,14 +29,16 @@ export default function reusableForm() {
           justifyContent: "flex-start",
         }}
       >
-        <Button>
-          <ArrowBack
-            sx={{
-              fontSize: 40,
-              color: "black",
-            }}
-          />
-        </Button>
+        <Link to="/dashboard">
+          <Button>
+            <ArrowBack
+              sx={{
+                fontSize: 40,
+                color: "black",
+              }}
+            />
+          </Button>
+        </Link>
       </Box>
       {/* Form Header Text Container */}
       <Box
@@ -65,6 +65,7 @@ export default function reusableForm() {
           paddingTop: "7%",
         }}
       >
+        {/* Total Expenses Amount */}
         <Typography
           sx={{
             fontSize: "150%",
@@ -75,20 +76,21 @@ export default function reusableForm() {
         >
           $321.45
         </Typography>
-        <Box alignContent="center">
-          <Link to="/spendingform">
-            <Button
-              variant="outlined"
-              sx={{
-                width: "150%",
-              }}
-            >
-              Add Expense
-            </Button>
-          </Link>
-        </Box>
+        {/* Button to Add Expense */}
+        <Link to="/spendingform">
+          <Button
+            variant="outlined"
+            sx={{
+              bgcolor: "gray",
+              color: "white",
+              border: "none",
+            }}
+          >
+            Add Expense
+          </Button>
+        </Link>
       </Box>
-      {/* Individual Bill Container */}
+
       <Box
         sx={{
           borderRadius: "10px",

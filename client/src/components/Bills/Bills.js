@@ -1,17 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Bills/Bills.css";
-import {
-  Container,
-  Button,
-  Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Grid,
-  Box,
-} from "@mui/material";
+import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
@@ -31,7 +20,6 @@ export default function Bills() {
         alignItems: "center",
       }}
     >
-      <Link to="/bills"></Link>
       {/* Back Arrow */}
       <Box
         sx={{
@@ -40,14 +28,16 @@ export default function Bills() {
           justifyContent: "flex-start",
         }}
       >
-        <Button>
-          <ArrowBack
-            sx={{
-              fontSize: 40,
-              color: "black",
-            }}
-          />
-        </Button>
+        <Link to="/dashboard">
+          <Button>
+            <ArrowBack
+              sx={{
+                fontSize: 40,
+                color: "black",
+              }}
+            />
+          </Button>
+        </Link>
       </Box>
       {/* Form Header Text Container */}
       <Box
@@ -74,6 +64,7 @@ export default function Bills() {
           paddingTop: "7%",
         }}
       >
+        {/* Total Bills Amount */}
         <Typography
           sx={{
             fontSize: "150%",
@@ -82,13 +73,16 @@ export default function Bills() {
             paddingBottom: "15%",
           }}
         >
-          $321.45
+          $950.00
         </Typography>
+        {/* Button to Add Bill */}
         <Link to="/billsform">
           <Button
             variant="outlined"
             sx={{
-              width: "150%",
+              bgcolor: "gray",
+              color: "white",
+              border: "none",
             }}
           >
             Add A Bill
@@ -97,11 +91,6 @@ export default function Bills() {
       </Box>
       {/* Individual Bill Container */}
       <Box
-        secondaryAction={
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        }
         sx={{
           borderRadius: "10px",
           boxShadow: "2px 2px 10px black",

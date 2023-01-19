@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { textAlign } from "@mui/system";
-import { Container, Button, Typography, IconButton, List, ListItem, ListItemText, Grid, Box } from "@mui/material";
+// import { textAlign } from "@mui/system";
+import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FontAwesomeIcon from "@mui/icons-material/Delete";
 import ArrowBack from "@mui/icons-material/ArrowBack";
@@ -24,7 +24,6 @@ export default function Savings() {
         alignItems: "center",
       }}
     >
-      <Link to="/savings"></Link>
       <Box
         sx={{
           width: "105%",
@@ -32,14 +31,16 @@ export default function Savings() {
           justifyContent: "flex-start",
         }}
       >
-        <Button>
-          <ArrowBack
-            sx={{
-              fontSize: 40,
-              color: "black",
-            }}
-          />
-        </Button>
+        <Link to="/dashboard">
+          <Button>
+            <ArrowBack
+              sx={{
+                fontSize: 40,
+                color: "black",
+              }}
+            />
+          </Button>
+        </Link>
       </Box>
       <Box
         sx={{
@@ -69,7 +70,9 @@ export default function Savings() {
           <Button
             variant="outlined"
             sx={{
-              width: "150%",
+              bgcolor: "gray",
+              color: "white",
+              border: "none",
             }}
           >
             Create A Goal
