@@ -1,17 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Bills/Bills.css";
-import {
-  Container,
-  Button,
-  Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Grid,
-  Box,
-} from "@mui/material";
+import { Container, Button, Typography, IconButton, List, ListItem, ListItemText, Grid, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
@@ -96,6 +86,7 @@ export default function Bills() {
         </Link>
       </Box>
       {/* Individual Bill Container */}
+
       <Box
         secondaryAction={
           <IconButton edge="end" aria-label="delete">
