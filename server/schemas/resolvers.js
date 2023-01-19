@@ -52,18 +52,14 @@ const resolvers = {
       return income;
     },
     addIncome: async (parent, { income }, context) => {
+        const newIncome = new TotalIncome({ income });
       console.log(context);
-      if (context.user) {
-        const income = new TotalIncome({ income });
-
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { income: income },
+          $push: { income: newIncome },
         });
-
-        return income;
+        return newIncome;
       }
     },
-  },
 };
 
 module.exports = resolvers;
