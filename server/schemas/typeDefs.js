@@ -16,9 +16,7 @@ const typeDefs = gql`
     _id: ID
     billName: String
     billAmount: Int
-    billDueDate: Int
-    billCadence: String
-    billCategory: String
+    dueDate: String
   }
 
   type TotalSavings {
