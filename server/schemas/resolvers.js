@@ -49,18 +49,26 @@ const resolvers = {
     addIncome: async (parent, { income }, context) => {
       console.log(context.user);
       console.log(income);
-        return await User.findByIdAndUpdate(context.user._id, {
-          $set: { income: income },
-        });
+      return await User.findByIdAndUpdate(context.user._id, {
+        $set: { income: income },
+      });
     },
     addBill: async (parent, { billName, billAmount, dueDate }, context) => {
-      const bill = await TotalBills.create({ billName, billAmount, dueDate });
+      console.log(context.user);
 
-      return await User.findByIdAndUpdate(context.user._id, {
-        $push: { bill: bill },
-      });
-    }
+      const bill = await TotalBills.create({ billName, billAmount, dueDate });
+      console.log(bill);
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $addToSet: { bills: bill },
+        },
+        {
+          new: true,
+        }
+      );
     },
+  },
 };
 
 module.exports = resolvers;
