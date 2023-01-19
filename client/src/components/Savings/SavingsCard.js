@@ -1,16 +1,10 @@
 import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 
 export default function SavingsCard({ name, amount, length, description }) {
   return (
     <Box
-      secondaryAction={
-        <IconButton edge="end" aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
-      }
       sx={{
         borderRadius: "10px",
         boxShadow: "2px 2px 10px black",
