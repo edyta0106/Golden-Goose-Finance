@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Button, Typography, IconButton } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
-import DeleteIcon from "@mui/icons-material/Delete";
+import SpendingCard from "./SpendingCard";
+import dummy from "./DummySpending";
 
 export default function reusableForm() {
   return (
@@ -31,14 +30,16 @@ export default function reusableForm() {
           justifyContent: "flex-start",
         }}
       >
-        <Button>
-          <ArrowBack
-            sx={{
-              fontSize: 40,
-              color: "black",
-            }}
-          />
-        </Button>
+        <Link to="/dashboard">
+          <Button>
+            <ArrowBack
+              sx={{
+                fontSize: 40,
+                color: "black",
+              }}
+            />
+          </Button>
+        </Link>
       </Box>
       {/* Form Header Text Container */}
       <Box
@@ -65,6 +66,7 @@ export default function reusableForm() {
           paddingTop: "7%",
         }}
       >
+        {/* Total Expenses Amount */}
         <Typography
           sx={{
             fontSize: "150%",
@@ -75,19 +77,25 @@ export default function reusableForm() {
         >
           $321.45
         </Typography>
+        {/* Button to Add Expense */}
         <Link to="/spendingform">
           <Button
             variant="outlined"
             sx={{
-              width: "150%",
+              bgcolor: "gray",
+              color: "white",
+              border: "none",
             }}
           >
             Add Expense
           </Button>
         </Link>
       </Box>
-      {/* Individual Bill Container */}
-      <Box
+      {dummy.map((expenses) => (
+        <SpendingCard key={expenses.id} name={expenses.name} cost={expenses.cost} />
+      ))}
+
+      {/* <Box
         sx={{
           borderRadius: "10px",
           boxShadow: "2px 2px 10px black",
@@ -105,14 +113,6 @@ export default function reusableForm() {
       >
         <Typography
           sx={{
-            fontSize: "130%",
-            fontWeight: "bold",
-          }}
-        >
-          Jun. 15th
-        </Typography>
-        <Typography
-          sx={{
             fontSize: "150%",
           }}
         >
@@ -128,7 +128,7 @@ export default function reusableForm() {
         <IconButton edge="end" aria-label="delete">
           <DeleteIcon sx={{ color: "white" }} />
         </IconButton>
-      </Box>
+      </Box> */}
     </Container>
   );
 }
