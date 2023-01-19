@@ -1,32 +1,138 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import { Typography, Button, Container } from "@mui/material";
 import { textAlign } from "@mui/system";
 import { Container, Button, Typography, IconButton, List, ListItem, ListItemText, Grid, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import FontAwesomeIcon from "@mui/icons-material/Delete";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 
-const dayjs = require("dayjs");
+// const dayjs = require("dayjs");
 
 export default function Savings() {
   return (
-    <>
+    <Container
+      sx={{
+        borderRadius: "10px",
+        boxShadow: "0px 0px 17px 1px black",
+        width: "90%",
+        height: "100vh",
+        bgcolor: "#C5C6C7",
+        marginTop: "5%",
+        marginBottom: "5%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Link to="/savings"></Link>
+      <Box
+        sx={{
+          width: "105%",
+          display: "flex",
+          justifyContent: "flex-start",
+        }}
+      >
+        <Button>
+          <ArrowBack
+            sx={{
+              fontSize: 40,
+              color: "black",
+            }}
+          />
+        </Button>
+      </Box>
+      <Box
+        sx={{
+          height: "10%",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "300%",
+            fontWeight: "bolder",
+          }}
+        >
+          {/* dayjs().format(MM/DD/YYYY) */}
+          Savings Goals
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          paddingBottom: "7%",
+          paddingTop: "7%",
+        }}
+      >
+        <Link to="/savingsform">
+          <Button
+            variant="outlined"
+            sx={{
+              width: "150%",
+            }}
+          >
+            Create A Goal
+          </Button>
+        </Link>
+      </Box>
 
-      <Container sx={{ bgcolor: "#546E7A", height: "100vh" }} maxWidth="sm">
-        <Typography variant="h3" component="h1">
-          January 18, 2023 Savings Goals
+      <Box
+        secondaryAction={
+          <IconButton edge="end" aria-label="delete">
+            <DeleteIcon />
+          </IconButton>
+        }
+        sx={{
+          borderRadius: "10px",
+          boxShadow: "2px 2px 10px black",
+          width: "100%",
+          height: "15vh",
+          bgcolor: "#546E7A",
+          color: "white",
+          marginTop: "10px",
+          marginBottom: "10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around",
+          alignContent: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "150%",
+            fontWeight: "bold",
+          }}
+        >
+          Complete within: 6 months
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "130%",
+          }}
+        >
+          Family Vacation to Fiji
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "130%",
+          }}
+        >
+          Description - will go below
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "130%",
+          }}
+        >
+          $9,000
         </Typography>
 
-        {/* dayjs().format(MM/DD/YYYY) */}
-
-        <Box textAlign="center" sx={{ p: 2, border: "3px solid black" }}>
-          <Link to="/savingsform">
-            <Button type="submit">Set a New Goal</Button>
-          </Link>
-        </Box>
-      </Container>
-    </>
+        <IconButton edge="end" aria-label="delete">
+          {/* <DeleteIcon sx={{ color: "white" }} /> */}
+          <FontAwesomeIcon icon="fa-regular fa-square-check" />
+        </IconButton>
+      </Box>
+    </Container>
   );
 }

@@ -10,7 +10,7 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
-  const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
+  //   const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
   return (
     <>
       <Link to="/savingsform"></Link>
