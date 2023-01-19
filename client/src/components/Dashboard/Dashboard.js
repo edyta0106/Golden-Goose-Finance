@@ -77,33 +77,32 @@ export default function Dashboard() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // try {
-    //   const { data } = await addIncome({
-    //     variables: {
-    //       ...formState,
-    //       userIncomeID: Auth.getToken().data.id_token,
-    //     },
-    //   });
-    //   setFormState("");
-    // } catch (err) {
-    //   console.error(err);
-    // }
     try {
-      const mutationResponse = await addIncome({
+      const { data } = await addIncome({
         variables: {
-          ...formState,
+          formState,
+          user: Auth.getProfile().data.income
         },
       });
-      const token = mutationResponse.income.token;
-      Auth.getToken(token);
-    } catch (error) {
-      console.log(JSON.stringify(error));
+    } catch (err) {
+      console.error(err);
     }
+
+    // try {
+    //   const mutationResponse = await addIncome({
+    //     variables: {
+    //       ...formState,
+    //     },
+    //   });
+    //   const token = mutationResponse.income.token;
+    //   Auth.getToken(token);
+    // } catch (error) {
+    //   console.log(JSON.stringify(error));
+    // }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
     setFormState({
       ...formState,
       [name]: value,

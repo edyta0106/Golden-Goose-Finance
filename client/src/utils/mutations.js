@@ -29,7 +29,6 @@ export const ADD_INCOME = gql`
   mutation Login($income: Int) {
     addIncome(income: $income) {
       income
-      username
     }
   }
 `;
