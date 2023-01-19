@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Container, IconButton, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBack from "@mui/icons-material/ArrowBack";
+import BillsCard from "./BillsCard";
+import dummy from "./DummyBills";
 
 export default function Bills() {
   return (
@@ -90,49 +91,14 @@ export default function Bills() {
         </Link>
       </Box>
       {/* Individual Bill Container */}
-      <Box
-        sx={{
-          borderRadius: "10px",
-          boxShadow: "2px 2px 10px black",
-          width: "100%",
-          height: "15vh",
-          bgcolor: "#546E7A",
-          color: "white",
-          marginTop: "10px",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          alignContent: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "130%",
-            fontWeight: "bold",
-          }}
-        >
-          Jun. 16th
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "150%",
-          }}
-        >
-          Rent
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "150%",
-          }}
-        >
-          $950
-        </Typography>
-
-        <IconButton edge="end" aria-label="delete">
-          <DeleteIcon sx={{ color: "white" }} />
-        </IconButton>
-      </Box>
+      {dummy.map((bills) => (
+        <BillsCard
+          key={bills._id}
+          duedate={bills.duedate}
+          name={bills.name}
+          amount={bills.amount}
+        />
+      ))}
     </Container>
     // <Container sx={{ textAlign: "center" }}>
     //   <Link to="/bills"></Link>
