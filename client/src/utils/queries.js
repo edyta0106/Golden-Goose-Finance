@@ -11,6 +11,7 @@ export const GET_ME = gql`
 export const GET_GOAL = gql`
   {
     getGoal {
+      savingsID
       goalName
       goalAmount
       goalLength

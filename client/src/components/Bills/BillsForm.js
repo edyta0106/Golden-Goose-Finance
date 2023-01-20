@@ -10,7 +10,9 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function BillsForm() {
-  //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
+    const [formState, setFormState] = useState({ billName: "", billAmount: "", dueDate: "" });
+
+
   return (
     <>
       <Container>

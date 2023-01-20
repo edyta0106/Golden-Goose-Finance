@@ -62,8 +62,6 @@ const resolvers = {
       });
     },
     addBill: async (parent, { billName, billAmount, dueDate }, context) => {
-      console.log(context.user);
-
       const bill = await TotalBills.create({ billName, billAmount, dueDate });
       console.log(bill);
       return await User.findByIdAndUpdate(
@@ -76,10 +74,18 @@ const resolvers = {
         }
       );
     },
-    addGoal: async (parent, args) => {
-      const totalSavings = await TotalSavings.create(args);
+    addGoal: async (parent, args, context) => {
+      const newGoal = await TotalSavings.create(args);
 
-      return totalSavings;
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $addToSet: { savings: newGoal },
+        },
+        {
+          new: true,
+        }
+      );
     },
     addExpense: async (parent, args) => {
       const totalSpending = await TotalSpending.create(args);
