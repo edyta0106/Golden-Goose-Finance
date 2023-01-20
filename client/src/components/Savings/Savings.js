@@ -4,11 +4,18 @@ import { Box, Button, Container, Typography } from "@mui/material";
 
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SavingsCard from "./SavingsCard";
-import dummy from "./DummyData";
+// import dummy from "./DummyData";
+
+import { useQuery } from "@apollo/client";
+import { GET_GOAL, GET_ME } from "../../utils/queries";
 
 // const dayjs = require("dayjs");
 
 export default function Savings() {
+  const { loading, error, data } = useQuery(GET_GOAL);
+  const savingsData = data?.getGoal || [];
+  console.log(savingsData);
+  console.log(error);
   return (
     <Container
       sx={{
@@ -79,8 +86,8 @@ export default function Savings() {
           </Button>
         </Link>
       </Box>
-      {dummy.map((goals) => (
-        <SavingsCard key={goals._id} name={goals.name} amount={goals.amount} length={goals.length} description={goals.description} />
+      {savingsData.map((goals) => (
+        <SavingsCard key={goals.savingsID} name={goals.goalName} amount={goals.goalAmount} length={goals.goalLength} description={goals.goalDescription} />
       ))}
     </Container>
   );

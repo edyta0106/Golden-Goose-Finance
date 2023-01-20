@@ -32,3 +32,25 @@ export const ADD_INCOME = gql`
     }
   }
 `;
+
+export const ADD_BILL = gql`
+  mutation AddBill($billName: String!, $billAmount: Int!, $dueDate: String!) {
+    addBill(billName: $billName, billAmount: $billAmount, dueDate: $dueDate) {
+      _id
+      billAmount
+      billName
+      dueDate
+    }
+  }
+`;
+
+export const ADD_GOAL = gql`
+  mutation addGoal($goalAmount: Int, $goalName: String, $goalLength: String, $goalDescription: String) {
+    addGoal(goalAmount: $goalAmount, goalName: $goalName, goalLength: $goalLength, goalDescription: $goalDescription) {
+      goalAmount
+      goalName
+      goalLength
+      goalDescription
+    }
+  }
+`;
