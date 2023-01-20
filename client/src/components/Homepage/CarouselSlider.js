@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Box } from "@mui/system";
-import photo2 from "../images/photo2.jpg";
+// import photo2 from "../images/photo2.jpg";
 import photo3 from "../images/photo3.jpg";
 import photo4 from "../images/photo4.jpg";
 import photo5 from "../images/photo5.jpg";
@@ -26,7 +26,7 @@ export default function CarouselSlider() {
       }}
     >
       <Slider {...settings}>
-        <div>
+        {/* <div>
           <img
             src={photo2}
             style={{
@@ -35,7 +35,7 @@ export default function CarouselSlider() {
               margin: "auto",
             }}
           />
-        </div>
+        </div> */}
         <div>
           <img
             src={photo3}

@@ -20,7 +20,12 @@ export default function BillsForm() {
     setValue(newValue);
   };
 
-  //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
+  const [formState, setFormState] = useState({
+    billName: "",
+    billAmount: "",
+    dueDate: "",
+  });
+
   return (
     <>
       <Container>
