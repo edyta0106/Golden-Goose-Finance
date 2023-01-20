@@ -29,5 +29,15 @@ export const GET_EXPENSE = gql`
       expenseCost
     }
   }
+`;
 
+export const GET_BILL = gql`
+  query GetBill {
+    getBill {
+      _id
+      billAmount
+      billDueDate
+      billName
+    }
+  }
 `;
