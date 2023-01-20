@@ -21,6 +21,18 @@ export const GET_GOAL = gql`
   }
 `;
 
+
 export const GET_TOTAL = gql `
 
 `
+
+export const GET_EXPENSE = gql`
+  {
+    getExpense {
+      spendingID
+      expenseName
+      expenseCost
+    }
+  }
+`;
+

@@ -28,10 +28,9 @@ const typeDefs = gql`
   }
 
   type TotalSpending {
-    _id: ID
+    spendingID: ID
     expenseName: String
     expenseCost: Int
-    expenseCategory: String
   }
 
   type Logout {
@@ -46,16 +45,21 @@ const typeDefs = gql`
   type Query {
     user: [User]!
     getGoal: [TotalSavings]
+
     getIncome: [User]
+
+    getExpense: [TotalSpending]
+
   }
 
   type Mutation {
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addIncome(income: Int): Auth
+    addIncome(income: Int): User
     addBill(billName: String!, billAmount: Int!, dueDate: String!): TotalBills
     addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): TotalSavings
+    addExpense(expenseName: String, expenseCost: Int): TotalSpending
   }
 `;
 
