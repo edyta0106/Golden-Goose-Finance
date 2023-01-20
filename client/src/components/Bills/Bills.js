@@ -94,7 +94,7 @@ export default function Bills() {
       {dummy.map((bills) => (
         <BillsCard
           key={bills._id}
-          duedate={bills.duedate}
+          dueDate={bills.dueDate}
           name={bills.name}
           amount={bills.amount}
         />
