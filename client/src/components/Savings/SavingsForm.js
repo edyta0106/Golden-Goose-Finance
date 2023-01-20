@@ -5,6 +5,7 @@ import { Form, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_GOAL } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -15,7 +16,7 @@ export default function SavingsForm() {
   const [formState, setFormState] = useState({ goalName: "", goalAmount: 0, goalLength: "", goalDescription: "" });
 
   const [addGoal] = useMutation(ADD_GOAL);
-  const handleChange = (event) => {
+  const handleChange = (event) => {;
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
@@ -25,9 +26,14 @@ export default function SavingsForm() {
 
     try {
       const { data } = await addGoal({
-        variables: { ...formState, goalAmount: parseInt(formState.goalAmount) },
+        variables: {
+          ...formState,
+          goalAmount: parseInt(formState.goalAmount),
+          user: Auth.getProfile().data.username,
+        },
       });
       console.log(data);
+      setFormState()
     } catch (error) {
       console.log(JSON.stringify(error));
     }
@@ -36,7 +42,7 @@ export default function SavingsForm() {
   return (
     <>
       <Container>
-        <form component="form" onSubmit={handleFormSubmit}>
+        <form component="form">
           <StyledTextField
             name="goalName"
             value={formState.goalName}
@@ -81,6 +87,7 @@ export default function SavingsForm() {
           <Box sx={{ textAlign: "center" }}>
             <Link to="/savings">
               <Button
+                onClick={handleFormSubmit}
                 type="submit"
                 variant="outlined"
                 sx={{
