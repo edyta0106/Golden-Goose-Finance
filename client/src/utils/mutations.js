@@ -64,3 +64,12 @@ export const ADD_GOAL = gql`
     }
   }
 `;
+
+export const ADD_EXPENSE = gql`
+  mutation addExpense($expenseName: String, $expenseCost: Int) {
+    addExpense(expenseName: $expenseName, expenseCost: $expenseCost) {
+      expenseName
+      expenseCost
+    }
+  }
+`;
