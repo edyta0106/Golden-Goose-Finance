@@ -8,6 +8,7 @@ export const GET_ME = gql`
     }
   }
 `;
+
 export const GET_GOAL = gql`
   {
     getGoal {
@@ -19,3 +20,14 @@ export const GET_GOAL = gql`
     }
   }
 `;
+
+export const GET_EXPENSE = gql`
+  {
+    getExpense {
+      spendingID
+      expenseName
+      expenseCost
+    }
+  }
+`;
+

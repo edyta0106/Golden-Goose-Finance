@@ -1,8 +1,11 @@
 import { Container, TextField, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import { useMutation } from "@apollo/client";
+import { ADD_EXPENSE } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -10,17 +13,58 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SpendingForm() {
-  //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
+  const [formState, setFormState] = useState({ expenseName: "", expenseCost: 0 });
+
+  const [addExpense] = useMutation(ADD_EXPENSE);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addExpense({
+        variables: { ...formState, expenseCost: parseInt(formState.expenseCost), user: Auth.getProfile().data.username },
+      });
+      console.log(data);
+      setFormState();
+      window.location.assign("/spending");
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  };
+
   return (
     <>
       <Container>
-        <Box component="form" onSubmit="">
-          <StyledTextField name="expenseName" type="text" id="standard-basic" label="Expense Name" variant="standard" />
-          <StyledTextField name="expenseCost" type="number" step="10" id="standard-basic" label="Expense Amount" variant="standard" />
+        <form component="form">
+          <StyledTextField
+            name="expenseName"
+            value={formState?.expenseName || ""}
+            onChange={handleChange}
+            type="text"
+            id="standard-basic"
+            label="Expense Name"
+            variant="standard"
+          />
+          <StyledTextField
+            name="expenseCost"
+            value={formState?.expenseCost || ""}
+            onChange={handleChange}
+            type="number"
+            step="10"
+            id="standard-basic"
+            label="Expense Amount"
+            variant="standard"
+          />
 
           <Box sx={{ textAlign: "center" }}>
             <Link to="/spending">
               <Button
+                onClick={handleFormSubmit}
+                type="submit"
                 variant="outlined"
                 sx={{
                   my: 5,
@@ -33,7 +77,7 @@ export default function SpendingForm() {
               </Button>
             </Link>
           </Box>
-        </Box>
+        </form>
       </Container>
     </>
   );
