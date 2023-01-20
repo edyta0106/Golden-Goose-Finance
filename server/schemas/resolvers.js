@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, TotalBills, TotalSavings } = require("../models");
+const TotalSpending = require("../models/TotalSpending");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -79,6 +80,10 @@ const resolvers = {
       const totalSavings = await TotalSavings.create(args);
 
       return totalSavings;
+    },
+    addExpense: async (parent, args) => {
+      const totalSpending = await TotalSpending.create(args);
+      return totalSpending;
     },
   },
 };

@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SpendingCard from "./SpendingCard";
-import dummy from "./DummySpending";
+// import dummy from "./DummySpending";
 
-export default function reusableForm() {
+import { useQuery } from "@apollo/client";
+import { GET_EXPENSE, GET_ME } from "../../utils/queries";
+
+export default function Spending() {
+  const { loading, error, data } = useQuery(GET_EXPENSE);
+  const spendingData = data?.getExpense || [];
+
   return (
-    // Reusable form container
     <Container
       sx={{
         borderRadius: "10px",
@@ -91,44 +96,9 @@ export default function reusableForm() {
           </Button>
         </Link>
       </Box>
-      {dummy.map((expenses) => (
-        <SpendingCard key={expenses.id} name={expenses.name} cost={expenses.cost} />
+      {spendingData.map((expenses) => (
+        <SpendingCard key={expenses._id} name={expenses.expenseName} cost={expenses.expenseCost} />
       ))}
-
-      {/* <Box
-        sx={{
-          borderRadius: "10px",
-          boxShadow: "2px 2px 10px black",
-          width: "100%",
-          height: "15vh",
-          bgcolor: "#546E7A",
-          color: "white",
-          marginTop: "10px",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          alignContent: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "150%",
-          }}
-        >
-          King Soopers
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "150%",
-          }}
-        >
-          $204.59
-        </Typography>
-        <IconButton edge="end" aria-label="delete">
-          <DeleteIcon sx={{ color: "white" }} />
-        </IconButton>
-      </Box> */}
     </Container>
   );
 }
