@@ -29,5 +29,5 @@ export const GET_EXPENSE = gql`
       expenseCost
     }
   }
-`;
 
+`;
