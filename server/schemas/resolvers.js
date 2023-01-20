@@ -1,10 +1,11 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, TotalBills } = require("../models");
+const { User, TotalBills, TotalSavings } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
         const user = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
@@ -15,6 +16,12 @@ const resolvers = {
         return user;
       }
       throw new AuthenticationError("No one logged in!");
+    },
+    getGoal: async (parent, args, context) => {
+      console.log("in this file");
+      const goals = await TotalSavings.find({});
+      console.log(goals);
+      return goals;
     },
   },
   Mutation: {
@@ -65,6 +72,11 @@ const resolvers = {
           new: true,
         }
       );
+    },
+    addGoal: async (parent, args) => {
+      const totalSavings = await TotalSavings.create(args);
+
+      return totalSavings;
     },
   },
 };
