@@ -54,8 +54,6 @@ const resolvers = {
       });
     },
     addBill: async (parent, { billName, billAmount, dueDate }, context) => {
-      console.log(context.user);
-
       const bill = await TotalBills.create({ billName, billAmount, dueDate });
       console.log(bill);
       return await User.findByIdAndUpdate(
