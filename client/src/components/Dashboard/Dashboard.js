@@ -2,22 +2,14 @@
 
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Paper,
-  Grid,
-  Container,
-  Button,
-  Typography,
-  Modal,
-  TextField,
-} from "@mui/material";
+import { Box, Paper, Grid, Container, Button, Typography, Modal, TextField } from "@mui/material";
 import { MdOutlineSavings } from "react-icons/md";
 import { Stack } from "@mui/system";
 import { ADD_INCOME } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
+import { TheGraphComponent } from "../graphComponents/TheGraphComponent";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#FAF9F6",
@@ -70,10 +62,24 @@ export default function Dashboard() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [chart, setChart] = useState("");
+
+  const handleClick = (event) => {
+    const currentTargetId = event.currentTarget.id;
+    if (currentTargetId === "pie") {
+      setChart("pie");
+    } else if (currentTargetId === "line") {
+      setChart("line");
+    } else {
+      setChart("bar");
+    }
+  };
+
   const [formState, setFormState] = useState({
     income: "",
   });
   const [addIncome, { error }] = useMutation(ADD_INCOME);
+
   if (error) {
     console.log(JSON.stringify(error));
   }
@@ -89,8 +95,8 @@ export default function Dashboard() {
         },
       });
       console.log(data);
-      setFormState({income: ""});
-      handleClose()
+      setFormState({ income: "" });
+      handleClose();
     } catch (err) {
       console.error(err);
     }
@@ -111,8 +117,8 @@ export default function Dashboard() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={9}>
-              <Item sx={{ height: " 200px" }} elevation={12}>
-                Graph
+              <Item sx={{ minHeight: " 200px" }} elevation={12}>
+                <TheGraphComponent chart={chart} />
               </Item>
             </Grid>
             <Grid
@@ -130,55 +136,45 @@ export default function Dashboard() {
                   Savings
                 </StyledButton>
               </Item>
+
               <Item elevation={12}>
                 <StyledButton>Bills</StyledButton>
               </Item>
+
               <Item elevation={12}>
                 <StyledButton>Spent</StyledButton>
               </Item>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              sx={{ display: "flex", flexDirection: "row", gap: 3 }}
-            >
+            <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
-                <Button>Pie</Button>
+                <Button onClick={handleClick} id="pie">
+                  Pie
+                </Button>
               </Item>
               <Item elevation={16}>
-                <Button>Bar</Button>
+                <Button onClick={handleClick} id="bar">
+                  Bar
+                </Button>
               </Item>
               <Item elevation={16}>
-                <Button>Line</Button>
+                <Button onClick={handleClick} id="line">
+                  Line
+                </Button>
               </Item>
             </Grid>
           </Grid>
         </Box>
       </Container>
+
       <Container sx={{ mt: 3, p: 3, backgroundColor: "#c1c1c1" }}>
         <Box sx={{ flexGrow: 1 }}>
-          <Grid
-            container
-            rowSpacing={2}
-            columnSpacing={{ xs: 2, sm: 3, md: 4 }}
-          >
+          <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
               <StyledBox elevation={4}>
                 <Button onClick={handleOpen}>Update Total</Button>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
+                <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                   <StyledModalBox>
-                    <Typography
-                      textAlign="center"
-                      sx={{ mt: 5 }}
-                      id="modal-modal-title"
-                      variant="h6"
-                      component="h2"
-                    >
+                    <Typography textAlign="center" sx={{ mt: 5 }} id="modal-modal-title" variant="h6" component="h2">
                       Updated your finances here :
                     </Typography>
                     <Box component="form" spacing={2} sx={{ p: 5 }}>
@@ -195,11 +191,7 @@ export default function Dashboard() {
                       </ModalItem>
                       <Box textAlign="center">
                         {/* Need to bind click event to handle what happens on form submit */}
-                        <Button
-                          onClick={handleFormSubmit}
-                          type="button"
-                          sx={{ mt: 5 }}
-                        >
+                        <Button onClick={handleFormSubmit} type="button" sx={{ mt: 5 }}>
                           Submit
                         </Button>
                       </Box>
