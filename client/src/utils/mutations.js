@@ -61,7 +61,8 @@ export const REMOVE_GOAL = gql`
       goalName
       goalLength
       goalDescription
-    }     
+    }
+  }
 `;
 export const ADD_EXPENSE = gql`
   mutation addExpense($expenseName: String, $expenseCost: Int) {
