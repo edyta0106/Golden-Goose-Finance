@@ -24,11 +24,20 @@ const resolvers = {
       console.log(goals);
       return goals;
     },
+
+    getIncome: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.find({ _id: context.user._id });
+        return userData;
+      }
+      throw new AuthenticationError("No one logged in!");
+
     getExpense: async (parent, args, context) => {
       console.log("in this file");
       const expenses = await TotalSpending.find({});
       console.log(expenses);
       return expenses;
+
     },
   },
   Mutation: {
@@ -63,9 +72,15 @@ const resolvers = {
     addIncome: async (parent, { income }, context) => {
       console.log(context.user);
       console.log(income);
-      return await User.findByIdAndUpdate(context.user._id, {
-        $set: { income: income },
-      });
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $set: { income: income },
+        },
+        {
+          new: true,
+        }
+      );
     },
     addBill: async (parent, { billName, billAmount, dueDate }, context) => {
       const bill = await TotalBills.create({ billName, billAmount, dueDate });

@@ -45,7 +45,11 @@ const typeDefs = gql`
   type Query {
     user: [User]!
     getGoal: [TotalSavings]
+
+    getIncome: [User]
+
     getExpense: [TotalSpending]
+
   }
 
   type Mutation {
