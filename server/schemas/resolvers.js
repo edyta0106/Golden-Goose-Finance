@@ -31,7 +31,7 @@ const resolvers = {
         return userData;
       }
       throw new AuthenticationError("No one logged in!");
-
+    },
     getExpense: async (parent, args, context) => {
       console.log("in this file");
       const expenses = await TotalSpending.find({});
