@@ -11,6 +11,11 @@ import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { TheGraphComponent } from "../graphComponents/TheGraphComponent";
 
+//1. create use state - income, setIncome
+//2. build a function that setsIncome when modal is open
+//3. create query to find income on user context
+//4. pass that query results to income
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#FAF9F6",
   ...theme.typography.body2,
