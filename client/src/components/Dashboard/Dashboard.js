@@ -115,8 +115,6 @@ export default function Dashboard() {
     });
   };
 
-  
-
   return (
     <Box sx={{ minHeight: "100vh" }}>
       {/* Change bgColor for containers later */}
@@ -137,11 +135,8 @@ export default function Dashboard() {
                 justifyContent: "space-evenly",
               }}
             >
-              <Item elevation={12}>
-                <StyledButton>
-                  {/* <MdOutlineSavings /> */}
-                  Savings
-                </StyledButton>
+              {/* <Item elevation={12}>
+                <StyledButton>Savings</StyledButton>
               </Item>
 
               <Item elevation={12}>
@@ -150,7 +145,7 @@ export default function Dashboard() {
 
               <Item elevation={12}>
                 <StyledButton>Spent</StyledButton>
-              </Item>
+              </Item> */}
             </Grid>
             <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
@@ -207,7 +202,7 @@ export default function Dashboard() {
                 </Modal>
               </StyledBox>
             </Grid>
-            <Grid item xs={6}>
+            {/* <Grid item xs={6}>
               <StyledBox elevation={4}>
                 <Link to="/spending">
                   <Button>Spending</Button>
@@ -227,7 +222,7 @@ export default function Dashboard() {
                   <Button>Savings</Button>
                 </Link>
               </StyledBox>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
       </Container>
