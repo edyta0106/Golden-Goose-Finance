@@ -28,7 +28,7 @@ const typeDefs = gql`
   }
 
   type TotalSpending {
-    _id: ID
+    spendingID: ID
     expenseName: String
     expenseCost: Int
   }
@@ -45,6 +45,7 @@ const typeDefs = gql`
   type Query {
     user: [User]!
     getGoal: [TotalSavings]
+    getExpense: [TotalSpending]
   }
 
   type Mutation {

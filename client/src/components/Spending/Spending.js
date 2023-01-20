@@ -11,6 +11,7 @@ import { GET_EXPENSE, GET_ME } from "../../utils/queries";
 export default function Spending() {
   const { loading, error, data } = useQuery(GET_EXPENSE);
   const spendingData = data?.getExpense || [];
+  console.log(data);
 
   return (
     <Container
@@ -97,7 +98,7 @@ export default function Spending() {
         </Link>
       </Box>
       {spendingData.map((expenses) => (
-        <SpendingCard key={expenses._id} name={expenses.expenseName} cost={expenses.expenseCost} />
+        <SpendingCard key={expenses.spendingID} name={expenses.expenseName} cost={expenses.expenseCost} />
       ))}
     </Container>
   );

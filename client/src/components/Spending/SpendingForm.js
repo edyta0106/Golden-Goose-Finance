@@ -5,6 +5,7 @@ import { Form, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_EXPENSE } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -25,9 +26,11 @@ export default function SpendingForm() {
 
     try {
       const { data } = await addExpense({
-        variables: { ...formState, expenseCost: parseInt(formState.expenseCost) },
+        variables: { ...formState, expenseCost: parseInt(formState.expenseCost), user: Auth.getProfile().data.username },
       });
       console.log(data);
+      setFormState();
+      window.location.assign("/spending");
     } catch (error) {
       console.log(JSON.stringify(error));
     }
@@ -36,10 +39,10 @@ export default function SpendingForm() {
   return (
     <>
       <Container>
-        <form component="form" onSubmit={handleFormSubmit}>
+        <form component="form">
           <StyledTextField
             name="expenseName"
-            value={formState.expenseName}
+            value={formState?.expenseName || ""}
             onChange={handleChange}
             type="text"
             id="standard-basic"
@@ -48,7 +51,7 @@ export default function SpendingForm() {
           />
           <StyledTextField
             name="expenseCost"
-            value={formState.expenseCost}
+            value={formState?.expenseCost || ""}
             onChange={handleChange}
             type="number"
             step="10"
@@ -60,6 +63,8 @@ export default function SpendingForm() {
           <Box sx={{ textAlign: "center" }}>
             <Link to="/spending">
               <Button
+                onClick={handleFormSubmit}
+                type="submit"
                 variant="outlined"
                 sx={{
                   my: 5,
