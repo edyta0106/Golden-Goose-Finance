@@ -94,18 +94,6 @@ export default function Dashboard() {
     } catch (err) {
       console.error(err);
     }
-
-    // try {
-    //   const mutationResponse = await addIncome({
-    //     variables: {
-    //       ...formState,
-    //     },
-    //   });
-    //   const token = mutationResponse.income.token;
-    //   Auth.getToken(token);
-    // } catch (error) {
-    //   console.log(JSON.stringify(error));
-    // }
   };
 
   const handleChange = (event) => {
