@@ -135,8 +135,11 @@ export default function Dashboard() {
                 justifyContent: "space-evenly",
               }}
             >
-              {/* <Item elevation={12}>
-                <StyledButton>Savings</StyledButton>
+              <Item elevation={12}>
+                <StyledButton>
+                  {/* <MdOutlineSavings /> */}
+                  Savings
+                </StyledButton>
               </Item>
 
               <Item elevation={12}>
@@ -145,7 +148,7 @@ export default function Dashboard() {
 
               <Item elevation={12}>
                 <StyledButton>Spent</StyledButton>
-              </Item> */}
+              </Item>
             </Grid>
             <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
