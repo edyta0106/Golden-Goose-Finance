@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, TotalBills, TotalSavings } = require("../models");
+const TotalSpending = require("../models/TotalSpending");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -18,6 +19,20 @@ const resolvers = {
       const goals = await TotalSavings.find({});
       console.log(goals);
       return goals;
+    },
+
+    getIncome: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.find({ _id: context.user._id });
+        return userData;
+      }
+      throw new AuthenticationError("No one logged in!");
+    },
+    getExpense: async (parent, args, context) => {
+      console.log("in this file");
+      const expenses = await TotalSpending.find({});
+      console.log(expenses);
+      return expenses;
     },
   },
   Mutation: {
@@ -52,9 +67,15 @@ const resolvers = {
     addIncome: async (parent, { income }, context) => {
       console.log(context.user);
       console.log(income);
-      return await User.findByIdAndUpdate(context.user._id, {
-        $set: { income: income },
-      });
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $set: { income: income },
+        },
+        {
+          new: true,
+        }
+      );
     },
     addBill: async (parent, { billName, billAmount, dueDate }, context) => {
       const bill = await TotalBills.create({ billName, billAmount, dueDate });
@@ -87,6 +108,18 @@ const resolvers = {
         return User.findOneAndUpdate({ _id: context.user._id }, { $pull: { goals: goal } }, { new: true });
       }
       // throw new AuthenticationError("You need to be logged in!");
+    },
+    addExpense: async (parent, args, context) => {
+      const newExpense = await TotalSpending.create(args);
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $addToSet: { spending: newExpense },
+        },
+        {
+          new: true,
+        }
+      );
     },
   },
 };

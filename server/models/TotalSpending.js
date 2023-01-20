@@ -13,10 +13,10 @@ const TotalSpendingSchema = new Schema({
     type: Number,
     required: true,
   },
-  expenseCategory: {
-    type: String,
-    required: true,
-  },
+  // expenseCategory: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const TotalSpending = model("TotalSpending", TotalSpendingSchema);
