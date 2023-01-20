@@ -1,8 +1,10 @@
 import { Container, TextField, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import { useMutation } from "@apollo/client";
+import { ADD_GOAL } from "../../utils/mutations";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -10,21 +12,68 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
-  //   const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
+  const [formState, setFormState] = useState({ goalName: "", goalAmount: 0, goalLength: "", goalDescription: "" });
+
+  const [addGoal] = useMutation(ADD_GOAL);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addGoal({
+        variables: { ...formState, goalAmount: parseInt(formState.goalAmount) },
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  };
+
   return (
     <>
       <Container>
-        <Box component="form" onSubmit="">
-          <StyledTextField name="goalName" type="text" id="standard-basic" label="Goal Name" variant="standard" />
-          <StyledTextField name="goalAmount" type="number" step="10" id="standard-basic" label="Goal Amount" variant="standard" />
-          <StyledTextField name="goalLength" type="text" id="standard-basic" label="Goal Length" variant="standard" />
+        <form component="form" onSubmit={handleFormSubmit}>
+          <StyledTextField
+            name="goalName"
+            value={formState.goalName}
+            onChange={handleChange}
+            type="text"
+            id="standard-basic"
+            label="Goal Name"
+            variant="standard"
+          />
+          <StyledTextField
+            name="goalAmount"
+            value={formState.goalAmount}
+            onChange={handleChange}
+            type="number"
+            step="10"
+            id="standard-basic"
+            label="Goal Amount"
+            variant="standard"
+          />
+          <StyledTextField
+            name="goalLength"
+            type="text"
+            value={formState.goalLength}
+            onChange={handleChange}
+            id="standard-basic"
+            label="Goal Length"
+            variant="standard"
+          />
           <StyledTextField
             name="goalDescription"
             type="textarea"
+            value={formState.goalDescription}
+            onChange={handleChange}
             id="standard-basic"
             multiline
             rows={2}
-            maxRows={4}
+            // maxRows={4}
             label="Goal Description"
             variant="standard"
           />
@@ -32,6 +81,7 @@ export default function SavingsForm() {
           <Box sx={{ textAlign: "center" }}>
             <Link to="/savings">
               <Button
+                type="submit"
                 variant="outlined"
                 sx={{
                   my: 5,
@@ -44,7 +94,7 @@ export default function SavingsForm() {
               </Button>
             </Link>
           </Box>
-        </Box>
+        </form>
       </Container>
     </>
   );
