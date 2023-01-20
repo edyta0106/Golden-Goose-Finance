@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, TotalBills, TotalSavings } = require("../models");
+const TotalSpending = require("../models/TotalSpending");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -22,6 +23,12 @@ const resolvers = {
       const goals = await TotalSavings.find({});
       console.log(goals);
       return goals;
+    },
+    getExpense: async (parent, args, context) => {
+      console.log("in this file");
+      const expenses = await TotalSpending.find({});
+      console.log(expenses);
+      return expenses;
     },
   },
   Mutation: {
@@ -80,6 +87,18 @@ const resolvers = {
         context.user._id,
         {
           $addToSet: { savings: newGoal },
+        },
+        {
+          new: true,
+        }
+      );
+    },
+    addExpense: async (parent, args, context) => {
+      const newExpense = await TotalSpending.create(args);
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $addToSet: { spending: newExpense },
         },
         {
           new: true,
