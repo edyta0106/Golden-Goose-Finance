@@ -23,6 +23,12 @@ const resolvers = {
       console.log(goals);
       return goals;
     },
+    getIncome: async (parent, args, context) => {
+      
+      const income = await User.find({ _id: context.user._id })
+      .populate("income")
+      return income;
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
