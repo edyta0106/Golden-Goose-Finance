@@ -12,23 +12,24 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
-  const [formState, setFormState] = useState({ goalName: "", goalAmount: "", goalLength: "", goalDescription: "" });
+  const [formState, setFormState] = useState({ goalName: "", goalAmount: 0, goalLength: "", goalDescription: "" });
 
   const [addGoal] = useMutation(ADD_GOAL);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
-  console.log(formState);
+
   const handleFormSubmit = async (event) => {
-    console.log("clicked");
+    event.preventDefault();
+
     try {
       const { data } = await addGoal({
-        variables: { ...formState },
+        variables: { ...formState, goalAmount: parseInt(formState.goalAmount) },
       });
       console.log(data);
     } catch (error) {
-      console.log(error);
+      console.log(JSON.stringify(error));
     }
   };
 
@@ -72,12 +73,12 @@ export default function SavingsForm() {
             id="standard-basic"
             multiline
             rows={2}
-            maxRows={4}
+            // maxRows={4}
             label="Goal Description"
             variant="standard"
           />
 
-          {/* <Box sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "center" }}>
             <Link to="/savings">
               <Button
                 type="submit"
@@ -92,8 +93,7 @@ export default function SavingsForm() {
                 Submit
               </Button>
             </Link>
-          </Box> */}
-          <Button type="submit">Submit</Button>
+          </Box>
         </form>
       </Container>
     </>
