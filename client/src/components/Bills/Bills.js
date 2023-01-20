@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import { Box, Button, Container, IconButton, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import BillsCard from "./BillsCard";
-import dummy from "./DummyBills";
+// import dummy from "./DummyBills";
+
+import { useQuery } from "@apollo/client";
+import { GET_BILL, GET_ME } from "../../utils/queries";
 
 export default function Bills() {
+  const { loading, error, data } = useQuery(GET_BILL);
+  const billData = data?.getBill || [];
+  console.log(data);
   return (
     <Container
       sx={{
@@ -91,12 +97,12 @@ export default function Bills() {
         </Link>
       </Box>
       {/* Individual Bill Container */}
-      {dummy.map((bills) => (
+      {billData.map((bills) => (
         <BillsCard
-          key={bills._id}
-          dueDate={bills.dueDate}
-          name={bills.name}
-          amount={bills.amount}
+          key={bills.billID}
+          dueDate={bills.billDueDate}
+          name={bills.billName}
+          amount={bills.billAmount}
         />
       ))}
     </Container>

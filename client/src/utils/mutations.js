@@ -34,12 +34,19 @@ export const ADD_INCOME = gql`
 `;
 
 export const ADD_BILL = gql`
-  mutation AddBill($billName: String!, $billAmount: Int!, $dueDate: String!) {
-    addBill(billName: $billName, billAmount: $billAmount, dueDate: $dueDate) {
-      # _id
+  mutation addBill(
+    $billName: String!
+    $billAmount: Int!
+    $billDueDate: String!
+  ) {
+    addBill(
+      billName: $billName
+      billAmount: $billAmount
+      billDueDate: $billDueDate
+    ) {
       billAmount
       billName
-      dueDate
+      billDueDate
     }
   }
 `;

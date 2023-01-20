@@ -37,7 +37,13 @@ const resolvers = {
       const expenses = await TotalSpending.find({});
       console.log(expenses);
       return expenses;
+    },
 
+    getBill: async (parent, args, context) => {
+      console.log("in this file");
+      const expenses = await TotalBills.find({});
+      console.log(expenses);
+      return expenses;
     },
   },
   Mutation: {
@@ -82,8 +88,12 @@ const resolvers = {
         }
       );
     },
-    addBill: async (parent, { billName, billAmount, dueDate }, context) => {
-      const bill = await TotalBills.create({ billName, billAmount, dueDate });
+    addBill: async (parent, { billName, billAmount, billDueDate }, context) => {
+      const bill = await TotalBills.create({
+        billName,
+        billAmount,
+        billDueDate,
+      });
       console.log(bill);
       return await User.findByIdAndUpdate(
         context.user._id,

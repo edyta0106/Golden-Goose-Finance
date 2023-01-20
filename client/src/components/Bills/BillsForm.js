@@ -26,7 +26,7 @@ export default function BillsForm() {
   const [formState, setFormState] = useState({
     billName: "",
     billAmount: 0,
-    dueDate: "",
+    billDueDate: "",
   });
   const [addBill] = useMutation(ADD_BILL);
   const handleChange = (event) => {
@@ -56,9 +56,9 @@ export default function BillsForm() {
   return (
     <>
       <Container>
-        <Box component="form" onSubmit="">
+        <Box component="form">
           <StyledTextField
-            name="billname"
+            name="billName"
             value={formState?.billName || ""}
             onChange={handleChange}
             type="text"
@@ -67,7 +67,7 @@ export default function BillsForm() {
             variant="standard"
           />
           <StyledTextField
-            name="billamount"
+            name="billAmount"
             value={formState?.billAmount || ""}
             onChange={handleChange}
             type="number"
@@ -76,11 +76,10 @@ export default function BillsForm() {
             label="Bill Amount"
             variant="standard"
           />
-          <br></br>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <MobileDatePicker
               label="Due Date"
-              name="duedate"
+              name="dueDate"
               value={formState?.billDueDate || ""}
               onChange={handleChange}
               inputFormat="MM/DD/YYYY"
@@ -88,17 +87,16 @@ export default function BillsForm() {
               // onChange={handleChanges}
               renderInput={(params) => <StyledTextField {...params} />}
             />
-          </LocalizationProvider>
-          {/* <StyledTextField
-            name="category"
+          </LocalizationProvider> */}
+          <StyledTextField
+            name="billDueDate"
+            value={formState?.billDueDate || ""}
+            onChange={handleChange}
             type="textarea"
             id="standard-basic"
-            multiline
-            rows={2}
-            maxRows={4}
-            label="Category Type"
+            label="Due Date"
             variant="standard"
-          /> */}
+          />
           <Box sx={{ textAlign: "center" }}>
             <Link to="/bills">
               <Button

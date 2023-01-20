@@ -13,7 +13,7 @@ const BillSchema = new Schema({
     type: Number,
     required: true,
   },
-  dueDate: {
+  billDueDate: {
     type: String,
     required: true,
   },
