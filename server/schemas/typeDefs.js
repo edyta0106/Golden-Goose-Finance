@@ -44,7 +44,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: [User]!
+    user: User!
     getGoal: [TotalSavings]
   }
 
@@ -54,7 +54,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
     addBill(billName: String!, billAmount: Int!, dueDate: String!): TotalBills
-    addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): TotalSavings
+    addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): User
+    removeGoal(goal: String): User
   }
 `;
 

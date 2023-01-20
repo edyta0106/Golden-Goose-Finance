@@ -1,8 +1,32 @@
 import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
 import DoneIcon from "@mui/icons-material/Done";
+import { REMOVE_GOAL } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 export default function SavingsCard({ name, amount, length, description }) {
+  const [removeGoal, { error }] = useMutation(REMOVE_GOAL, {
+    update(cache, { data: { removeGoal } }) {
+      // try {
+      //   cache.writeQuery({
+      //     query: QUERY_ME,
+      //     data: { me: removeSkill },
+      //   });
+      // } catch (e) {
+      //   console.error(e);
+      // }
+    },
+  });
+
+  const handleRemoveGoal = async (goal) => {
+    try {
+      const { data } = await removeGoal({
+        variables: { goal },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <Box
       sx={{
@@ -26,7 +50,7 @@ export default function SavingsCard({ name, amount, length, description }) {
           fontWeight: "bold",
         }}
       >
-        Complete within: {length} months
+        Complete within: {length}
       </Typography>
       <Typography
         sx={{
@@ -50,7 +74,7 @@ export default function SavingsCard({ name, amount, length, description }) {
         {amount}
       </Typography>
 
-      <IconButton edge="end" aria-label="delete">
+      <IconButton edge="end" aria-label="delete" onClick={() => handleRemoveGoal()}>
         <DoneIcon sx={{ color: "white" }} />
       </IconButton>
     </Box>

@@ -7,12 +7,8 @@ const resolvers = {
     user: async (parent, args, context) => {
       console.log(context.user);
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id })
-          .select("-__v -password")
-          .populate("bills")
-          .populate("income")
-          .populate("savings")
-          .populate("spending");
+        const user = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("savings", "spending", "bills");
+
         return user;
       }
       throw new AuthenticationError("No one logged in!");
@@ -85,6 +81,12 @@ const resolvers = {
           new: true,
         }
       );
+    },
+    removeGoal: async (parent, { goal }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate({ _id: context.user._id }, { $pull: { goals: goal } }, { new: true });
+      }
+      // throw new AuthenticationError("You need to be logged in!");
     },
   },
 };
