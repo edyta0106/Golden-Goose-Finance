@@ -13,10 +13,15 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
-  const [formState, setFormState] = useState({ goalName: "", goalAmount: 0, goalLength: "", goalDescription: "" });
+  const [formState, setFormState] = useState({
+    goalName: "",
+    goalAmount: 0,
+    goalLength: "",
+    goalDescription: "",
+  });
 
   const [addGoal] = useMutation(ADD_GOAL);
-  const handleChange = (event) => {;
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
@@ -33,7 +38,8 @@ export default function SavingsForm() {
         },
       });
       console.log(data);
-      setFormState()
+      setFormState();
+      window.location.assign("/savings");
     } catch (error) {
       console.log(JSON.stringify(error));
     }
@@ -45,7 +51,7 @@ export default function SavingsForm() {
         <form component="form">
           <StyledTextField
             name="goalName"
-            value={formState.goalName}
+            value={formState?.goalName || ""}
             onChange={handleChange}
             type="text"
             id="standard-basic"
@@ -54,7 +60,7 @@ export default function SavingsForm() {
           />
           <StyledTextField
             name="goalAmount"
-            value={formState.goalAmount}
+            value={formState?.goalAmount || ""}
             onChange={handleChange}
             type="number"
             step="10"
@@ -65,7 +71,7 @@ export default function SavingsForm() {
           <StyledTextField
             name="goalLength"
             type="text"
-            value={formState.goalLength}
+            value={formState?.goalLength || ""}
             onChange={handleChange}
             id="standard-basic"
             label="Goal Length"
@@ -74,7 +80,7 @@ export default function SavingsForm() {
           <StyledTextField
             name="goalDescription"
             type="textarea"
-            value={formState.goalDescription}
+            value={formState?.goalDescription || ""}
             onChange={handleChange}
             id="standard-basic"
             multiline
