@@ -87,7 +87,7 @@ export default function Savings() {
         </Link>
       </Box>
       {savingsData.map((goals) => (
-        <SavingsCard key={goals._id} name={goals.goalName} amount={goals.goalAmount} length={goals.goalLength} description={goals.goalDescription} />
+        <SavingsCard key={goals.savingsID} name={goals.goalName} amount={goals.goalAmount} length={goals.goalLength} description={goals.goalDescription} />
       ))}
     </Container>
   );
