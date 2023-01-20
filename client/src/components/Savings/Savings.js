@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Container, Typography } from "@mui/material";
-
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SavingsCard from "./SavingsCard";
 // import dummy from "./DummyData";
@@ -87,7 +86,13 @@ export default function Savings() {
         </Link>
       </Box>
       {savingsData.map((goals) => (
-        <SavingsCard key={goals.savingsID} name={goals.goalName} amount={goals.goalAmount} length={goals.goalLength} description={goals.goalDescription} />
+        <SavingsCard
+          key={goals.savingsID}
+          name={goals.goalName}
+          amount={goals.goalAmount}
+          length={goals.goalLength}
+          description={goals.goalDescription}
+        />
       ))}
     </Container>
   );
