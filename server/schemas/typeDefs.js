@@ -59,7 +59,6 @@ const typeDefs = gql`
     addBill(billName: String!, billAmount: Int!, dueDate: String!): TotalBills
     addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): User
     removeGoal(goal: String): User
-
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
   }
 `;
