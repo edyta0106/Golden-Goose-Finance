@@ -3,6 +3,10 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -10,14 +14,43 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function BillsForm() {
+  const [value, setValue] = React.useState(dayjs);
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
+
   //   const [formState, setFormState] = useState({ goalname: "", email: "", password: "" });
   return (
     <>
       <Container>
         <Box component="form" onSubmit="">
-          <StyledTextField name="billname" type="text" id="standard-basic" label="Bill Name" variant="standard" />
-          <StyledTextField name="billamount" type="number" step="10" id="standard-basic" label="Bill Amount" variant="standard" />
-          <StyledTextField name="duedate" type="text" id="standard-basic" label="Due Date" variant="standard" />
+          <StyledTextField
+            name="billname"
+            type="text"
+            id="standard-basic"
+            label="Bill Name"
+            variant="standard"
+          />
+          <StyledTextField
+            name="billamount"
+            type="number"
+            step="10"
+            id="standard-basic"
+            label="Bill Amount"
+            variant="standard"
+          />
+          <br></br>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <MobileDatePicker
+              label="Due Date"
+              name="duedate"
+              inputFormat="MM/DD/YYYY"
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <StyledTextField {...params} />}
+            />
+          </LocalizationProvider>
           <StyledTextField
             name="category"
             type="textarea"
@@ -28,7 +61,6 @@ export default function BillsForm() {
             label="Category Type"
             variant="standard"
           />
-
           <Box sx={{ textAlign: "center" }}>
             <Link to="/bills">
               <Button
