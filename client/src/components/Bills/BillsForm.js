@@ -1,4 +1,5 @@
-import { Container, TextField, Button } from "@mui/material";
+import { Container, TextField, Button, Typography } from "@mui/material";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -55,7 +56,52 @@ export default function BillsForm() {
 
   return (
     <>
-      <Container sx={{ minHeight: " 90vh" }}>
+      <Container
+        sx={{
+          borderRadius: "10px",
+          boxShadow: "0px 0px 17px 1px black",
+          width: "90%",
+          height: "75vh",
+          bgcolor: "#E3F2FD",
+          marginTop: "5%",
+          marginBottom: "5%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "105%",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Link to="/bills">
+            <Button>
+              <ArrowBack
+                sx={{
+                  fontSize: 40,
+                  color: "black",
+                }}
+              />
+            </Button>
+          </Link>
+        </Box>
+        <Box
+          sx={{
+            height: "20%",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "300%",
+              fontWeight: "bolder",
+            }}
+          >
+            Add Bill
+          </Typography>
+        </Box>
         <Box component="form">
           <StyledTextField
             name="billName"
