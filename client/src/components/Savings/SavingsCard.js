@@ -5,28 +5,6 @@ import DoneIcon from "@mui/icons-material/Done";
 // import { useMutation } from "@apollo/client";
 
 export default function SavingsCard({ savingsID, name, amount, length, description, handleDelete }) {
-  // const [removeGoal, { error }] = useMutation(REMOVE_GOAL, {
-  //   update(cache, { data: { removeGoal } }) {
-  //     // try {
-  //     //   cache.writeQuery({
-  //     //     query: QUERY_ME,
-  //     //     data: { me: removeSkill },
-  //     //   });
-  //     // } catch (e) {
-  //     //   console.error(e);
-  //     // }
-  //   },
-  // });
-
-  // const handleRemoveGoal = async (goal) => {
-  //   try {
-  //     const { data } = await removeGoal({
-  //       variables: { goal },
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
   return (
     <Box
       sx={{
@@ -34,7 +12,7 @@ export default function SavingsCard({ savingsID, name, amount, length, descripti
         boxShadow: "2px 2px 10px black",
         width: "100%",
         height: "15vh",
-        bgcolor: "#546E7A",
+        bgcolor: "rgb(255, 205, 86)",
         color: "white",
         marginTop: "10px",
         marginBottom: "10px",
@@ -50,7 +28,7 @@ export default function SavingsCard({ savingsID, name, amount, length, descripti
           fontWeight: "bold",
         }}
       >
-        Complete within: {length}
+        Complete by: {length}
       </Typography>
       <Typography
         sx={{
@@ -58,13 +36,6 @@ export default function SavingsCard({ savingsID, name, amount, length, descripti
         }}
       >
         {name}
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "130%",
-        }}
-      >
-        Description: {description}
       </Typography>
       <Typography
         sx={{

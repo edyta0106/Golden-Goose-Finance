@@ -10,7 +10,7 @@ export default function SpendingCard({ spendingID, name, cost, handleDelete }) {
         boxShadow: "2px 2px 10px black",
         width: "100%",
         height: "15vh",
-        bgcolor: "#546E7A",
+        bgcolor: "rgb(255, 99, 132)",
         color: "white",
         marginTop: "10px",
         marginBottom: "10px",
