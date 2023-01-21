@@ -55,28 +55,13 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, password: String!, email: String!): Auth
-    updateUser(
-      firstName: String
-      lastName: String
-      username: String
-      email: String
-      password: String
-    ): User
+    updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
-    addBill(
-      billName: String!
-      billAmount: Int!
-      billDueDate: String!
-    ): TotalBills
-    addGoal(
-      goalAmount: Int
-      goalName: String
-      goalLength: String
-      goalDescription: String
-    ): TotalSavings
+    addBill(billName: String!, billAmount: Int!, billDueDate: String!): TotalBills
+    addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): TotalSavings
 
-    removeGoal(goal: String): TotalSavings
+    removeGoal(savingsID: String): [TotalSavings]
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
     removeExpense(spendingID: String): [TotalSpending]
     removeBill(billID: String): [TotalBills]
