@@ -27,15 +27,13 @@ const StyledBox = styled(Paper)({
   backgroundColor: "#FAF9F6",
   minHeight: "160px",
   borderRadius: ".6rem",
-  // add paper proper here
+  display: "grid",
+  justifyContent: "center",
+  alignContent: "center",
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  padding: "0",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: ".8rem",
-    padding: ".5rem",
-  },
+  color: "#fff",
 }));
 
 const StyledModalBox = styled(Paper)({
@@ -151,8 +149,8 @@ export default function Dashboard() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
-                <Button onClick={handleOpen}>Update Total</Button>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(75, 192, 192, 1)" }}>
+                <StyledButton onClick={handleOpen}>Update Total</StyledButton>
                 <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                   <StyledModalBox>
                     <Typography textAlign="center" sx={{ mt: 5 }} id="modal-modal-title" variant="h6" component="h2">
@@ -182,23 +180,23 @@ export default function Dashboard() {
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(255, 99, 132, 1)" }}>
                 <Link to="/spending">
-                  <Button>Spending</Button>
+                  <StyledButton>Spending</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(54, 162, 235, 1)" }}>
                 <Link to="/bills">
-                  <Button>Bills</Button>
+                  <StyledButton>Bills</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(255, 206, 86, 1)" }}>
                 <Link to="/savings">
-                  <Button>Savings</Button>
+                  <StyledButton>Savings</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>
