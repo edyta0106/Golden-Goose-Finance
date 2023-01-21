@@ -72,8 +72,18 @@ export const ADD_GOAL = gql`
   }
 `;
 export const REMOVE_GOAL = gql`
-  mutation removeGoal($goalAmount: Int, $goalName: String, $goalLength: String, $goalDescription: String) {
-    removeGoal(goalAmount: $goalAmount, goalName: $goalName, goalLength: $goalLength, goalDescription: $goalDescription) {
+  mutation removeGoal(
+    $goalAmount: Int
+    $goalName: String
+    $goalLength: String
+    $goalDescription: String
+  ) {
+    removeGoal(
+      goalAmount: $goalAmount
+      goalName: $goalName
+      goalLength: $goalLength
+      goalDescription: $goalDescription
+    ) {
       goalAmount
       goalName
       goalLength
@@ -96,6 +106,17 @@ export const REMOVE_EXPENSE = gql`
       spendingID
       expenseName
       expenseCost
+    }
+  }
+`;
+
+export const REMOVE_BILL = gql`
+  mutation removeBill($billID: String) {
+    removeExpense(billID: $billID) {
+      billID
+      billName
+      billAmount
+      billDueDate
     }
   }
 `;
