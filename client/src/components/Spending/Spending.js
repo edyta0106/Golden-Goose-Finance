@@ -38,7 +38,7 @@ export default function Spending() {
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
-        bgcolor: "#EF9A9A",
+        bgcolor: "rgb(255, 99, 132)",
         marginTop: "5%",
         marginBottom: "5%",
         display: "flex",
