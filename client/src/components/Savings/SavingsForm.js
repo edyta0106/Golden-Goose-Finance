@@ -1,7 +1,8 @@
-import { Container, TextField, Button } from "@mui/material";
+import { Container, TextField, Button, Typography } from "@mui/material";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_GOAL } from "../../utils/mutations";
@@ -47,7 +48,53 @@ export default function SavingsForm() {
 
   return (
     <>
-      <Container sx={{ minHeight: " 90vh" }}>
+      <Container
+        sx={{
+          borderRadius: "10px",
+          boxShadow: "0px 0px 17px 1px black",
+          width: "90%",
+          height: "75vh",
+          bgcolor: "#FFF8E1",
+          marginTop: "5%",
+          marginBottom: "5%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "105%",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Link to="/savings">
+            <Button>
+              <ArrowBack
+                sx={{
+                  fontSize: 40,
+                  color: "black",
+                }}
+              />
+            </Button>
+          </Link>
+        </Box>
+        <Box
+          sx={{
+            height: "20%",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "300%",
+              fontWeight: "bolder",
+            }}
+          >
+            {/* dayjs().format(MM/DD/YYYY) */}
+            Add Goal
+          </Typography>
+        </Box>
         <form component="form">
           <StyledTextField
             name="goalName"
