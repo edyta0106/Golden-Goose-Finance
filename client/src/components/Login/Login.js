@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <>
       <Link to="/login"></Link>
-      <Container>
+      <Container sx={{ minHeight: "90vh" }}>
         <Box component="form" onSubmit={handleFormSubmit}>
           <StyledTextField
             placeholder="Your email"
@@ -73,9 +73,7 @@ export default function Login() {
           />
           {error ? (
             <div>
-              <p className="error-text">
-                The provided credentials are incorrect
-              </p>
+              <p className="error-text">The provided credentials are incorrect</p>
             </div>
           ) : null}
           <Box textAlign="center">

@@ -19,14 +19,14 @@ export default function LabelBottomNavigation() {
 
   return (
     <>
-      <StyledBottomNavigation sx={{ flexGrow: 1 }} value={value} onChange={handleChange} style={{ background: "#546E7A" }}>
+      <StyledBottomNavigation sx={{ flexGrow: 1 }} value={value} onChange={handleChange} style={{ background: " #28282B" }}>
         <a href="https://github.com/edyta0106/Financial_Tracker" target="_blank" rel="noopener noreferrer">
           <BottomNavigationAction style={{ color: "#FFFFFF" }} label="Documents" value="docs" icon={<GitHubIcon />} />
         </a>
 
-        <BottomNavigationAction style={{ color: "#FFFFFF" }} label="Contributors" value="group" icon={<GroupsIcon />} />
+        {/* <BottomNavigationAction style={{ color: "#FFFFFF" }} label="Contributors" value="group" icon={<GroupsIcon />} />
 
-        <BottomNavigationAction style={{ color: "#FFFFFF" }} label="Contact" value="contact" icon={<ContactSupportIcon />} />
+        <BottomNavigationAction style={{ color: "#FFFFFF" }} label="Contact" value="contact" icon={<ContactSupportIcon />} /> */}
       </StyledBottomNavigation>
     </>
   );
