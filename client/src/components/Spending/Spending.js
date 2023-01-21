@@ -7,11 +7,29 @@ import SpendingCard from "./SpendingCard";
 
 import { useQuery } from "@apollo/client";
 import { GET_EXPENSE, GET_ME } from "../../utils/queries";
+import { REMOVE_EXPENSE } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 export default function Spending() {
   const { loading, error, data } = useQuery(GET_EXPENSE);
   const spendingData = data?.getExpense || [];
   console.log(data);
+
+  const [removeExpense, { error: errorRemove }] = useMutation(REMOVE_EXPENSE);
+
+  const handleDelete = async (spendingID) => {
+    console.log("deleting");
+    try {
+      const { data } = await removeExpense({
+        variables: {
+          spendingID,
+        },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Container
@@ -98,7 +116,13 @@ export default function Spending() {
         </Link>
       </Box>
       {spendingData.map((expenses) => (
-        <SpendingCard key={expenses.spendingID} name={expenses.expenseName} cost={expenses.expenseCost} />
+        <SpendingCard
+          key={expenses.spendingID}
+          name={expenses.expenseName}
+          cost={expenses.expenseCost}
+          spendingID={expenses.spendingID}
+          handleDelete={handleDelete}
+        />
       ))}
     </Container>
   );
