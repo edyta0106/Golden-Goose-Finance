@@ -47,7 +47,7 @@ export default function SavingsForm() {
 
   return (
     <>
-      <Container>
+      <Container sx={{ minHeight: " 90vh" }}>
         <form component="form">
           <StyledTextField
             name="goalName"

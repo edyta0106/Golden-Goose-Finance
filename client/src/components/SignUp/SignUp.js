@@ -42,7 +42,7 @@ export default function SignUp(props) {
   return (
     <>
       <Link to="/signup"></Link>
-      <Container>
+      <Container sx={{ minHeight: "90vh" }}>
         <Box component="form" onSubmit={handleFormSubmit}>
           <StyledTextField
             onChange={handleChange}
@@ -74,7 +74,7 @@ export default function SignUp(props) {
             variant="standard"
           />
           <Box textAlign="center">
-            <Button type="submit" sx={{ mt: 5, backgroundColor: "#666" }}>
+            <Button type="submit" sx={{ mt: 5, border: 1 }}>
               Create Account
             </Button>
           </Box>

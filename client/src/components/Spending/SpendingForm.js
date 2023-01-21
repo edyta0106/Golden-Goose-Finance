@@ -38,7 +38,7 @@ export default function SpendingForm() {
 
   return (
     <>
-      <Container>
+      <Container sx={{ minHeight: " 90vh" }}>
         <form component="form">
           <StyledTextField
             name="expenseName"

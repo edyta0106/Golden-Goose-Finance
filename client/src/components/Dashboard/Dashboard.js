@@ -38,6 +38,7 @@ const StyledBox = styled(Paper)({
 
 const StyledButton = styled(Button)(({ theme }) => ({
   color: "#fff",
+  fontSize: "1.2rem",
 }));
 const GraphButton = styled(Button)(({ theme }) => ({
   "&:hover": { backgroundColor: "rgba(201, 203, 207, .7)" },
@@ -155,7 +156,7 @@ export default function Dashboard() {
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
               <StyledBox elevation={4} sx={{ bgcolor: "rgba(75, 192, 192, 1)" }}>
-                <StyledButton onClick={handleOpen}>Update Total</StyledButton>
+                <StyledButton onClick={handleOpen}>Update Income</StyledButton>
                 <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                   <StyledModalBox>
                     <Typography textAlign="center" sx={{ mt: 5 }} id="modal-modal-title" variant="h6" component="h2">

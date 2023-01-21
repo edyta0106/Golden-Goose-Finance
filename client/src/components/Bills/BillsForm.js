@@ -55,7 +55,7 @@ export default function BillsForm() {
 
   return (
     <>
-      <Container>
+      <Container sx={{ minHeight: " 90vh" }}>
         <Box component="form">
           <StyledTextField
             name="billName"

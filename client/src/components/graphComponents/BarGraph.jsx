@@ -24,14 +24,20 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
-      // data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      label: "Bills",
+      data: [250, 150, 500, 300, 200, 400, 300],
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
     {
-      label: "Dataset 2",
-      // data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      label: "Savings",
+      data: [50, 120, 100, 125, 220, 320, 375],
       backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+    {
+      label: "Expenses",
+      data: [123, 144, 220, 65, 300, 350, 235],
+
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
   ],
 };
