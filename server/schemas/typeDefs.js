@@ -78,6 +78,7 @@ const typeDefs = gql`
 
     removeGoal(goal: String): TotalSavings
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
+    removeExpense(spendingID: String): [TotalSpending]
   }
 `;
 
