@@ -8,9 +8,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       console.log(context.user);
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id })
-          .select("-__v -password")
-          .populate("savings", "spending", "bills");
+        const user = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("savings", "spending", "bills");
 
         return user;
       }
@@ -130,11 +128,7 @@ const resolvers = {
     },
     removeGoal: async (parent, { goal }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { goals: goal } },
-          { new: true }
-        );
+        return User.findOneAndUpdate({ _id: context.user._id }, { $pull: { goals: goal } }, { new: true });
       }
       // throw new AuthenticationError("You need to be logged in!");
     },
@@ -156,11 +150,7 @@ const resolvers = {
           spendingID,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { spending: deletedExpense._id } },
-          { new: true }
-        );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { spending: deletedExpense._id } }, { new: true });
 
         const expenses = await TotalSpending.find({});
         return expenses;
@@ -172,11 +162,7 @@ const resolvers = {
           billID,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { bill: deletedBill._id } },
-          { new: true }
-        );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { bill: deletedBill._id } }, { new: true });
 
         const bill = await TotalBills.find({});
         return bill;
