@@ -37,9 +37,9 @@ const resolvers = {
 
     getBill: async (parent, args, context) => {
       console.log("in this file");
-      const expenses = await TotalBills.find({});
-      console.log(expenses);
-      return expenses;
+      const bills = await TotalBills.find({});
+      console.log(bills);
+      return bills;
     },
   },
   Mutation: {
@@ -126,11 +126,15 @@ const resolvers = {
         }
       );
     },
-    removeGoal: async (parent, { goal }, context) => {
+    removeGoal: async (parent, { savingsID }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate({ _id: context.user._id }, { $pull: { goals: goal } }, { new: true });
+        const deletedGoal = await TotalSavings.findOneAndDelete({ savingsID });
+
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { savings: deletedGoal._id } }, { new: true });
+
+        const savings = await TotalSavings.find({});
+        return savings;
       }
-      // throw new AuthenticationError("You need to be logged in!");
     },
     addExpense: async (parent, args, context) => {
       const newExpense = await TotalSpending.create(args);
@@ -162,10 +166,10 @@ const resolvers = {
           billID,
         });
 
-        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { bill: deletedBill._id } }, { new: true });
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { bills: deletedBill._id } }, { new: true });
 
-        const bill = await TotalBills.find({});
-        return bill;
+        const bills = await TotalBills.find({});
+        return bills;
       }
     },
   },
