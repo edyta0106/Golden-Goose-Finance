@@ -5,18 +5,18 @@ import { Container } from "@mui/system";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
+// export const options = {
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: "top",
+//     },
+//     title: {
+//       display: true,
+//       text: "Chart.js Bar Chart",
+//     },
+//   },
+// };
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
@@ -39,8 +39,8 @@ export const data = {
 export function BarGraph() {
   return (
     <>
-      <Container>
-        <Bar options={options} data={data} />
+      <Container sx={{ maxWidth: 1000, minHeight: 400 }}>
+        <Bar options={{ maintainAspectRatio: false }} data={data} />
       </Container>
     </>
   );

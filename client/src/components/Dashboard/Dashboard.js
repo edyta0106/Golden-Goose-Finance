@@ -11,6 +11,11 @@ import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { TheGraphComponent } from "../graphComponents/TheGraphComponent";
 
+//1. create use state - income, setIncome
+//2. build a function that setsIncome when modal is open
+//3. create query to find income on user context
+//4. pass that query results to income
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#FAF9F6",
   ...theme.typography.body2,
@@ -22,15 +27,20 @@ const StyledBox = styled(Paper)({
   backgroundColor: "#FAF9F6",
   minHeight: "160px",
   borderRadius: ".6rem",
-  // add paper proper here
+  display: "grid",
+  justifyContent: "center",
+  alignContent: "center",
+  "&:hover": {
+    transform: "scale(110%)",
+    transition: "ease-in-out",
+  },
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  padding: "0",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: ".8rem",
-    padding: ".5rem",
-  },
+  color: "#fff",
+}));
+const GraphButton = styled(Button)(({ theme }) => ({
+  "&:hover": { backgroundColor: "rgba(201, 203, 207, .7)" },
 }));
 
 const StyledModalBox = styled(Paper)({
@@ -42,8 +52,6 @@ const StyledModalBox = styled(Paper)({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-
-  // add paper proper here
 });
 
 const ModalItem = styled(Paper)(({ theme }) => ({
@@ -110,70 +118,44 @@ export default function Dashboard() {
     });
   };
 
-  
-
   return (
-    <Box sx={{ minHeight: "100vh" }}>
-      {/* Change bgColor for containers later */}
-      <Container sx={{ mt: 5, p: 2, backgroundColor: "#c1c1c1" }}>
+    <Box sx={{ minHeight: "85vh" }}>
+      {/* Graph Container */}
+      <Container sx={{ mt: 5, p: 2 }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
-            <Grid item xs={9}>
+            <Grid item xs={12}>
               <Item sx={{ minHeight: " 200px" }} elevation={12}>
                 <TheGraphComponent chart={chart} />
               </Item>
             </Grid>
-            <Grid
-              item
-              xs={3}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <Item elevation={12}>
-                <StyledButton>
-                  {/* <MdOutlineSavings /> */}
-                  Savings
-                </StyledButton>
-              </Item>
-
-              <Item elevation={12}>
-                <StyledButton>Bills</StyledButton>
-              </Item>
-
-              <Item elevation={12}>
-                <StyledButton>Spent</StyledButton>
-              </Item>
-            </Grid>
-            <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
+            <Grid item xs={12} sx={{ mt: 5, display: "flex", justifyContent: "center", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="pie">
+                <GraphButton onClick={handleClick} id="pie">
                   Pie
-                </Button>
+                </GraphButton>
               </Item>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="bar">
+                <GraphButton onClick={handleClick} id="bar">
                   Bar
-                </Button>
+                </GraphButton>
               </Item>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="line">
+                <GraphButton onClick={handleClick} id="line">
                   Line
-                </Button>
+                </GraphButton>
               </Item>
             </Grid>
           </Grid>
         </Box>
       </Container>
-
-      <Container sx={{ mt: 3, p: 3, backgroundColor: "#c1c1c1" }}>
+      {/* Card Tile Container */}
+      <Container sx={{ mt: 5, p: 3 }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
-                <Button onClick={handleOpen}>Update Total</Button>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(75, 192, 192, 1)" }}>
+                <StyledButton onClick={handleOpen}>Update Total</StyledButton>
                 <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                   <StyledModalBox>
                     <Typography textAlign="center" sx={{ mt: 5 }} id="modal-modal-title" variant="h6" component="h2">
@@ -192,7 +174,6 @@ export default function Dashboard() {
                         />
                       </ModalItem>
                       <Box textAlign="center">
-                        {/* Need to bind click event to handle what happens on form submit */}
                         <Button onClick={handleFormSubmit} type="button" sx={{ mt: 5 }}>
                           Submit
                         </Button>
@@ -203,23 +184,23 @@ export default function Dashboard() {
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(255, 99, 132, 1)" }}>
                 <Link to="/spending">
-                  <Button>Spending</Button>
+                  <StyledButton>Expenses</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(54, 162, 235, 1)" }}>
                 <Link to="/bills">
-                  <Button>Bills</Button>
+                  <StyledButton>Bills</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>
             <Grid item xs={6}>
-              <StyledBox elevation={4}>
+              <StyledBox elevation={4} sx={{ bgcolor: "rgba(255, 206, 86, 1)" }}>
                 <Link to="/savings">
-                  <Button>Savings</Button>
+                  <StyledButton>Savings</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>

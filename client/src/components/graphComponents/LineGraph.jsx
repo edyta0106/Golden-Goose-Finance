@@ -11,7 +11,7 @@ export const LineGraph = () => {
       {
         label: "Yearly Fiances ",
         axis: "y",
-        data: [2000, 2200, 2500, 2600, 2600, 2000, 2200, 2300, 2700, 2800, 3000, 3400, 3400],
+        data: [2000, 2200, 2500, 2600, 2600, 2000, 2200, 2300, 2700, 2800, 3000, 5000],
         fill: false,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -37,8 +37,8 @@ export const LineGraph = () => {
   });
 
   return (
-    <Container sx={{}}>
-      <Line data={data} style={{}} />
+    <Container sx={{ maxWidth: 1000, minHeight: 400 }}>
+      <Line data={data} options={{ maintainAspectRatio: false }} />
     </Container>
   );
 };
