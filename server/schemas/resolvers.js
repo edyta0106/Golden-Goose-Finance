@@ -39,9 +39,9 @@ const resolvers = {
 
     getBill: async (parent, args, context) => {
       console.log("in this file");
-      const expenses = await TotalBills.find({});
-      console.log(expenses);
-      return expenses;
+      const bills = await TotalBills.find({});
+      console.log(bills);
+      return bills;
     },
   },
   Mutation: {
@@ -174,12 +174,12 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { bill: deletedBill._id } },
+          { $pull: { bills: deletedBill._id } },
           { new: true }
         );
 
-        const bill = await TotalBills.find({});
-        return bill;
+        const bills = await TotalBills.find({});
+        return bills;
       }
     },
   },

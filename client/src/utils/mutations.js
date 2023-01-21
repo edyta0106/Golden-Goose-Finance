@@ -112,7 +112,7 @@ export const REMOVE_EXPENSE = gql`
 
 export const REMOVE_BILL = gql`
   mutation removeBill($billID: String) {
-    removeExpense(billID: $billID) {
+    removeBill(billID: $billID) {
       billID
       billName
       billAmount

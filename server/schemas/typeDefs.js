@@ -64,11 +64,7 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
-    addBill(
-      billName: String!
-      billAmount: Int!
-      billDueDate: String!
-    ): TotalBills
+    addBill(billName: String, billAmount: Int, billDueDate: String): TotalBills
     addGoal(
       goalAmount: Int
       goalName: String
