@@ -2,38 +2,45 @@ import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { Container } from "@mui/system";
-// import getBillTotal from "../../utils/chartMath";
 import { useQuery } from "@apollo/client";
 import { GET_BILL, GET_EXPENSE, GET_GOAL } from "../../utils/queries";
-import { imageListItemBarClasses } from "@mui/material";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-//Custom hook -
+//Custom hook - to query multiple useQuery
 const QueryMultiple = () => {
   const res1 = useQuery(GET_BILL);
+  // const map1 = res1.map((x) => x);
   const res2 = useQuery(GET_GOAL);
   const res3 = useQuery(GET_EXPENSE);
 
   return [res1, res2, res3];
 };
 
+//Success :
+//1. I can query multiple useQuery with custom hook
+//2. I can see data object from returning (data1,data2,data3)
+
+//Problems :
+//1. I'm unable to map data within PieChart component - wont let me map within a pie chart component...
+
+//Solution :  (**These query can also be used for spending, savings, and bills pages to display total at the top)
+//1. Create totalBillAmount, totalExpenseAmount, totalSavingsAmount query to map over bills, expense, and savings to return sum of the total for each collection.
+
 export function PieChart() {
   const [{ data: data1 }, { data: data2 }, { data: data3 }] = QueryMultiple();
+  console.log(data1);
 
-  var mappingBills = [];
-  let billSum = 0;
-  mappingBills = data1.map((x) => {
-    return x;
-  });
-  console.log(mappingBills);
+  // const map1 = data1.map((x) => x);
+  // console.log(map1);
 
   const [stateData, setData] = useState({
     labels: ["Bill", "Savings", "Expenses"],
     datasets: [
       {
         label: "$$ Amount",
-        //Pass in : Bills  Expenses Savings
-        data: [100, 200, 100],
+        //Pass in data : totalBillAmount, totalExpenseAmount, totalSavingsAmount
+        //If passing in through data array doesn't work, try pushing to data array
+        data: [],
         backgroundColor: [
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
