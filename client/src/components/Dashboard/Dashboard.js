@@ -116,41 +116,17 @@ export default function Dashboard() {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh" }}>
+    <Box sx={{ minHeight: "85vh" }}>
       {/* Change bgColor for containers later */}
       <Container sx={{ mt: 5, p: 2, backgroundColor: "#c1c1c1" }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
-            <Grid item xs={9}>
+            <Grid item xs={12}>
               <Item sx={{ minHeight: " 200px" }} elevation={12}>
                 <TheGraphComponent chart={chart} />
               </Item>
             </Grid>
-            <Grid
-              item
-              xs={3}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <Item elevation={12}>
-                <StyledButton>
-                  {/* <MdOutlineSavings /> */}
-                  Savings
-                </StyledButton>
-              </Item>
-
-              <Item elevation={12}>
-                <StyledButton>Bills</StyledButton>
-              </Item>
-
-              <Item elevation={12}>
-                <StyledButton>Spent</StyledButton>
-              </Item>
-            </Grid>
-            <Grid item xs={12} sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
+            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
                 <Button onClick={handleClick} id="pie">
                   Pie
@@ -170,8 +146,8 @@ export default function Dashboard() {
           </Grid>
         </Box>
       </Container>
-
-      <Container sx={{ mt: 3, p: 3, backgroundColor: "#c1c1c1" }}>
+      {/* Card Tile Container */}
+      <Container sx={{ mt: 5, p: 3, backgroundColor: "#c1c1c1" }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
@@ -205,7 +181,7 @@ export default function Dashboard() {
                 </Modal>
               </StyledBox>
             </Grid>
-            {/* <Grid item xs={6}>
+            <Grid item xs={6}>
               <StyledBox elevation={4}>
                 <Link to="/spending">
                   <Button>Spending</Button>
@@ -225,7 +201,7 @@ export default function Dashboard() {
                   <Button>Savings</Button>
                 </Link>
               </StyledBox>
-            </Grid> */}
+            </Grid>
           </Grid>
         </Box>
       </Container>
