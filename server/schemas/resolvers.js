@@ -154,11 +154,7 @@ const resolvers = {
           spendingID,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { spending: deletedExpense._id } },
-          { new: true }
-        );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { spending: deletedExpense._id } }, { new: true });
 
         const expenses = await TotalSpending.find({});
         return expenses;
@@ -170,11 +166,7 @@ const resolvers = {
           billID,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { bills: deletedBill._id } },
-          { new: true }
-        );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { bills: deletedBill._id } }, { new: true });
 
         const bills = await TotalBills.find({});
         return bills;

@@ -45,7 +45,7 @@ const GraphButton = styled(Button)(({ theme }) => ({
 }));
 
 const StyledModalBox = styled(Paper)({
-  backgroundColor: "#FAF9F6",
+  backgroundColor: "#E0F2F1",
   minHeight: "160px",
   borderRadius: ".6rem",
   width: "80%",
@@ -175,7 +175,7 @@ export default function Dashboard() {
                         />
                       </ModalItem>
                       <Box textAlign="center">
-                        <Button onClick={handleFormSubmit} type="button" sx={{ mt: 5 }}>
+                        <Button onClick={handleFormSubmit} type="button" sx={{ mt: 5, bgcolor: "rgb(75, 192, 192)", color: "white" }}>
                           Submit
                         </Button>
                       </Box>

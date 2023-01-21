@@ -77,18 +77,6 @@ export default function SavingsForm() {
             label="Goal Length"
             variant="standard"
           />
-          <StyledTextField
-            name="goalDescription"
-            type="textarea"
-            value={formState?.goalDescription || ""}
-            onChange={handleChange}
-            id="standard-basic"
-            multiline
-            rows={2}
-            // maxRows={4}
-            label="Goal Description"
-            variant="standard"
-          />
 
           <Box sx={{ textAlign: "center" }}>
             <Link to="/savings">
@@ -98,7 +86,7 @@ export default function SavingsForm() {
                 variant="outlined"
                 sx={{
                   my: 5,
-                  bgcolor: "gray",
+                  bgcolor: "rgb(255, 205, 86)",
                   color: "white",
                   border: "none",
                 }}

@@ -38,7 +38,7 @@ export default function Spending() {
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
-        bgcolor: "#EF9A9A",
+        bgcolor: "#FFEBEE",
         marginTop: "5%",
         marginBottom: "5%",
         display: "flex",
@@ -106,7 +106,7 @@ export default function Spending() {
           <Button
             variant="outlined"
             sx={{
-              bgcolor: "gray",
+              bgcolor: "rgb(255, 99, 132)",
               color: "white",
               border: "none",
             }}

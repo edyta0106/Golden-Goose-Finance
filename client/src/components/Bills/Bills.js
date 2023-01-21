@@ -37,7 +37,7 @@ export default function Bills() {
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
-        bgcolor: "#C5C6C7",
+        bgcolor: "#E3F2FD",
         marginTop: "5%",
         marginBottom: "5%",
         display: "flex",
@@ -105,7 +105,7 @@ export default function Bills() {
           <Button
             variant="outlined"
             sx={{
-              bgcolor: "gray",
+              bgcolor: "rgb(54, 162, 235)",
               color: "white",
               border: "none",
             }}

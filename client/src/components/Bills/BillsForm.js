@@ -105,7 +105,7 @@ export default function BillsForm() {
                 variant="outlined"
                 sx={{
                   my: 5,
-                  bgcolor: "gray",
+                  bgcolor: "rgb(54, 162, 235)",
                   color: "white",
                   border: "none",
                 }}

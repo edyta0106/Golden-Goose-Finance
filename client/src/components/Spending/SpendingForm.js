@@ -68,7 +68,7 @@ export default function SpendingForm() {
                 variant="outlined"
                 sx={{
                   my: 5,
-                  bgcolor: "gray",
+                  bgcolor: "rgb(255, 99, 132)",
                   color: "white",
                   border: "none",
                 }}
