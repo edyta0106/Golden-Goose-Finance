@@ -30,10 +30,17 @@ const StyledBox = styled(Paper)({
   display: "grid",
   justifyContent: "center",
   alignContent: "center",
+  "&:hover": {
+    transform: "scale(110%)",
+    transition: "ease-in-out",
+  },
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
   color: "#fff",
+}));
+const GraphButton = styled(Button)(({ theme }) => ({
+  "&:hover": { backgroundColor: "rgba(201, 203, 207, .7)" },
 }));
 
 const StyledModalBox = styled(Paper)({
@@ -45,8 +52,6 @@ const StyledModalBox = styled(Paper)({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-
-  // add paper proper here
 });
 
 const ModalItem = styled(Paper)(({ theme }) => ({
@@ -115,8 +120,8 @@ export default function Dashboard() {
 
   return (
     <Box sx={{ minHeight: "85vh" }}>
-      {/* Change bgColor for containers later */}
-      <Container sx={{ mt: 5, p: 2, backgroundColor: "#c1c1c1" }}>
+      {/* Graph Container */}
+      <Container sx={{ mt: 5, p: 2 }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -124,28 +129,28 @@ export default function Dashboard() {
                 <TheGraphComponent chart={chart} />
               </Item>
             </Grid>
-            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", flexDirection: "row", gap: 3 }}>
+            <Grid item xs={12} sx={{ mt: 5, display: "flex", justifyContent: "center", flexDirection: "row", gap: 3 }}>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="pie">
+                <GraphButton onClick={handleClick} id="pie">
                   Pie
-                </Button>
+                </GraphButton>
               </Item>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="bar">
+                <GraphButton onClick={handleClick} id="bar">
                   Bar
-                </Button>
+                </GraphButton>
               </Item>
               <Item elevation={16}>
-                <Button onClick={handleClick} id="line">
+                <GraphButton onClick={handleClick} id="line">
                   Line
-                </Button>
+                </GraphButton>
               </Item>
             </Grid>
           </Grid>
         </Box>
       </Container>
       {/* Card Tile Container */}
-      <Container sx={{ mt: 5, p: 3, backgroundColor: "#c1c1c1" }}>
+      <Container sx={{ mt: 5, p: 3 }}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={6}>
@@ -169,7 +174,6 @@ export default function Dashboard() {
                         />
                       </ModalItem>
                       <Box textAlign="center">
-                        {/* Need to bind click event to handle what happens on form submit */}
                         <Button onClick={handleFormSubmit} type="button" sx={{ mt: 5 }}>
                           Submit
                         </Button>
@@ -182,7 +186,7 @@ export default function Dashboard() {
             <Grid item xs={6}>
               <StyledBox elevation={4} sx={{ bgcolor: "rgba(255, 99, 132, 1)" }}>
                 <Link to="/spending">
-                  <StyledButton>Spending</StyledButton>
+                  <StyledButton>Expenses</StyledButton>
                 </Link>
               </StyledBox>
             </Grid>

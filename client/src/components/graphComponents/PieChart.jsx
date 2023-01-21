@@ -30,9 +30,6 @@ export function PieChart() {
   const [{ data: data1 }, { data: data2 }, { data: data3 }] = QueryMultiple();
   console.log(data1);
 
-  // const map1 = data1.map((x) => x);
-  // console.log(map1);
-
   const [stateData, setData] = useState({
     labels: ["Bill", "Savings", "Expenses"],
     datasets: [
@@ -63,7 +60,7 @@ export function PieChart() {
   });
   return (
     <>
-      <Container sx={{ width: 400, height: 400 }}>
+      <Container sx={{ minWidth: 200, height: 400 }}>
         <Pie data={stateData} options={{ maintainAspectRatio: false }} />
       </Container>
     </>
