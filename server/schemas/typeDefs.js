@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
 
   type TotalBills {
-    _id: ID
+    billID: ID
     billName: String
     billAmount: Int
     billDueDate: String
@@ -64,6 +64,7 @@ const typeDefs = gql`
     removeGoal(savingsID: String): [TotalSavings]
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
     removeExpense(spendingID: String): [TotalSpending]
+    removeBill(billID: String): [TotalBills]
   }
 `;
 
