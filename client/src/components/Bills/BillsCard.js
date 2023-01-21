@@ -16,7 +16,7 @@ export default function BillsCard({
         boxShadow: "2px 2px 10px black",
         width: "100%",
         height: "15vh",
-        bgcolor: "#546E7A",
+        bgcolor: "rgb(54, 162, 235)",
         color: "white",
         marginTop: "10px",
         marginBottom: "10px",
