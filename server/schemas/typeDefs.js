@@ -60,6 +60,7 @@ const typeDefs = gql`
     addGoal(goalAmount: Int, goalName: String, goalLength: String, goalDescription: String): TotalSavings
     removeGoal(goal: String): TotalSavings
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
+    removeExpense(spendingID: String): [TotalSpending]
   }
 `;
 

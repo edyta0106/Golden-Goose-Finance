@@ -121,6 +121,16 @@ const resolvers = {
         }
       );
     },
+    removeExpense: async (parent, { spendingID }, context) => {
+      if (context.user) {
+        const deletedExpense = await TotalSpending.findOneAndDelete({ spendingID });
+
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { spending: deletedExpense._id } }, { new: true });
+
+        const expenses = await TotalSpending.find({});
+        return expenses;
+      }
+    },
   },
 };
 

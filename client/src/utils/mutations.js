@@ -72,3 +72,13 @@ export const ADD_EXPENSE = gql`
     }
   }
 `;
+
+export const REMOVE_EXPENSE = gql`
+  mutation removeExpense($spendingID: String) {
+    removeExpense(spendingID: $spendingID) {
+      spendingID
+      expenseName
+      expenseCost
+    }
+  }
+`;
