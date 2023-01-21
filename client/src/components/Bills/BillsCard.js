@@ -2,7 +2,13 @@ import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function BillsCard({ name, amount, dueDate }) {
+export default function BillsCard({
+  billID,
+  name,
+  amount,
+  dueDate,
+  handleDelete,
+}) {
   return (
     <Box
       sx={{
@@ -43,7 +49,11 @@ export default function BillsCard({ name, amount, dueDate }) {
         ${amount}
       </Typography>
 
-      <IconButton edge="end" aria-label="delete">
+      <IconButton
+        onClick={() => handleDelete(billID)}
+        edge="end"
+        aria-label="delete"
+      >
         <DeleteIcon sx={{ color: "white" }} />
       </IconButton>
     </Box>

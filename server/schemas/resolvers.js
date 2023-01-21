@@ -86,17 +86,29 @@ const resolvers = {
         }
       );
     },
-    addBill: async (parent, { billName, billAmount, billDueDate }, context) => {
-      const bill = await TotalBills.create({
-        billName,
-        billAmount,
-        billDueDate,
-      });
-      console.log(bill);
+    // addBill: async (parent, { billName, billAmount, billDueDate }, context) => {
+    //   const bill = await TotalBills.create({
+    //     billName,
+    //     billAmount,
+    //     billDueDate,
+    //   });
+    //   console.log(bill);
+    //   return await User.findByIdAndUpdate(
+    //     context.user._id,
+    //     {
+    //       $addToSet: { bills: bill },
+    //     },
+    //     {
+    //       new: true,
+    //     }
+    //   );
+    // },
+    addBill: async (parent, args, context) => {
+      const newBill = await TotalBills.create(args);
       return await User.findByIdAndUpdate(
         context.user._id,
         {
-          $addToSet: { bills: bill },
+          $addToSet: { bills: newBill },
         },
         {
           new: true,
@@ -140,12 +152,34 @@ const resolvers = {
     },
     removeExpense: async (parent, { spendingID }, context) => {
       if (context.user) {
-        const deletedExpense = await TotalSpending.findOneAndDelete({ spendingID });
+        const deletedExpense = await TotalSpending.findOneAndDelete({
+          spendingID,
+        });
 
-        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { spending: deletedExpense._id } }, { new: true });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { spending: deletedExpense._id } },
+          { new: true }
+        );
 
         const expenses = await TotalSpending.find({});
         return expenses;
+      }
+    },
+    removeBill: async (parent, { billID }, context) => {
+      if (context.user) {
+        const deletedBill = await TotalBills.findOneAndDelete({
+          billID,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bill: deletedBill._id } },
+          { new: true }
+        );
+
+        const bill = await TotalBills.find({});
+        return bill;
       }
     },
   },
