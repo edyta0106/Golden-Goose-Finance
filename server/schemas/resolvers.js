@@ -8,7 +8,9 @@ const resolvers = {
     user: async (parent, args, context) => {
       console.log(context.user);
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("savings", "spending", "bills");
+        const user = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate("savings", "spending", "bills");
 
         return user;
       }
@@ -31,6 +33,13 @@ const resolvers = {
     getExpense: async (parent, args, context) => {
       console.log("in this file");
       const expenses = await TotalSpending.find({});
+      console.log(expenses);
+      return expenses;
+    },
+
+    getBill: async (parent, args, context) => {
+      console.log("in this file");
+      const expenses = await TotalBills.find({});
       console.log(expenses);
       return expenses;
     },
@@ -77,8 +86,12 @@ const resolvers = {
         }
       );
     },
-    addBill: async (parent, { billName, billAmount, dueDate }, context) => {
-      const bill = await TotalBills.create({ billName, billAmount, dueDate });
+    addBill: async (parent, { billName, billAmount, billDueDate }, context) => {
+      const bill = await TotalBills.create({
+        billName,
+        billAmount,
+        billDueDate,
+      });
       console.log(bill);
       return await User.findByIdAndUpdate(
         context.user._id,
@@ -105,7 +118,11 @@ const resolvers = {
     },
     removeGoal: async (parent, { goal }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate({ _id: context.user._id }, { $pull: { goals: goal } }, { new: true });
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { goals: goal } },
+          { new: true }
+        );
       }
       // throw new AuthenticationError("You need to be logged in!");
     },

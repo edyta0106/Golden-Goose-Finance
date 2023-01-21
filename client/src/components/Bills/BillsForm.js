@@ -7,6 +7,9 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { useMutation } from "@apollo/client";
+import { ADD_BILL } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -14,61 +17,91 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function BillsForm() {
-  const [value, setValue] = React.useState(dayjs);
+  // const [value, setValue] = React.useState(dayjs);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+  // const handleChanges = (newValue) => {
+  //   setValue(newValue);
+  // };
 
   const [formState, setFormState] = useState({
     billName: "",
-    billAmount: "",
-    dueDate: "",
+    billAmount: 0,
+    billDueDate: "",
   });
+  const [addBill] = useMutation(ADD_BILL);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addBill({
+        variables: {
+          ...formState,
+          billAmount: parseInt(formState.billAmount),
+          user: Auth.getProfile().data.username,
+        },
+      });
+      console.log(data);
+      setFormState();
+      window.location.assign("/bills");
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  };
 
   return (
     <>
       <Container>
-        <Box component="form" onSubmit="">
+        <Box component="form">
           <StyledTextField
-            name="billname"
+            name="billName"
+            value={formState?.billName || ""}
+            onChange={handleChange}
             type="text"
             id="standard-basic"
             label="Bill Name"
             variant="standard"
           />
           <StyledTextField
-            name="billamount"
+            name="billAmount"
+            value={formState?.billAmount || ""}
+            onChange={handleChange}
             type="number"
             step="10"
             id="standard-basic"
             label="Bill Amount"
             variant="standard"
           />
-          <br></br>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <MobileDatePicker
               label="Due Date"
-              name="duedate"
-              inputFormat="MM/DD/YYYY"
-              value={value}
+              name="dueDate"
+              value={formState?.billDueDate || ""}
               onChange={handleChange}
+              inputFormat="MM/DD/YYYY"
+              // value={value}
+              // onChange={handleChanges}
               renderInput={(params) => <StyledTextField {...params} />}
             />
-          </LocalizationProvider>
+          </LocalizationProvider> */}
           <StyledTextField
-            name="category"
+            name="billDueDate"
+            value={formState?.billDueDate || ""}
+            onChange={handleChange}
             type="textarea"
             id="standard-basic"
-            multiline
-            rows={2}
-            maxRows={4}
-            label="Category Type"
+            label="Due Date"
             variant="standard"
           />
           <Box sx={{ textAlign: "center" }}>
             <Link to="/bills">
               <Button
+                onClick={handleFormSubmit}
+                type="submit"
                 variant="outlined"
                 sx={{
                   my: 5,
