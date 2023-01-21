@@ -40,7 +40,7 @@ export function PieChart() {
         label: "$$ Amount",
         //Pass in data : totalBillAmount, totalExpenseAmount, totalSavingsAmount
         //If passing in through data array doesn't work, try pushing to data array
-        data: [],
+        data: [40, 50, 100],
         backgroundColor: [
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
@@ -63,8 +63,8 @@ export function PieChart() {
   });
   return (
     <>
-      <Container sx={{}}>
-        <Pie data={stateData} />
+      <Container sx={{ width: 400, height: 400 }}>
+        <Pie data={stateData} options={{ maintainAspectRatio: false }} />
       </Container>
     </>
   );
@@ -72,3 +72,4 @@ export function PieChart() {
 
 //resources :
 //1. https://www.chartjs.org/docs/latest/configuration/elements.html#arc-configuration
+//2. https://stackoverflow.com/questions/59325426/how-to-resize-chart-js-element-in-react-js

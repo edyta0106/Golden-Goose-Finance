@@ -37,8 +37,8 @@ export const LineGraph = () => {
   });
 
   return (
-    <Container sx={{}}>
-      <Line data={data} style={{}} />
+    <Container sx={{ maxWidth: 1000, minHeight: 400 }}>
+      <Line data={data} options={{ maintainAspectRatio: false }} />
     </Container>
   );
 };
