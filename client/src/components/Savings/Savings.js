@@ -40,7 +40,7 @@ export default function Savings() {
         boxShadow: "0px 0px 17px 1px black",
         width: "90%",
         height: "100vh",
-        bgcolor: "#C5C6C7",
+        bgcolor: "#FFF8E1",
         marginTop: "5%",
         marginBottom: "5%",
         display: "flex",
@@ -94,7 +94,7 @@ export default function Savings() {
           <Button
             variant="outlined"
             sx={{
-              bgcolor: "gray",
+              bgcolor: "rgb(255, 205, 86)",
               color: "white",
               border: "none",
             }}
