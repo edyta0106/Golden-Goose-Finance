@@ -34,7 +34,7 @@ export const GET_EXPENSE = gql`
 export const GET_BILL = gql`
   query GetBill {
     getBill {
-      _id
+      billID
       billAmount
       billDueDate
       billName

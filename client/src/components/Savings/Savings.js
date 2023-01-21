@@ -4,9 +4,10 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SavingsCard from "./SavingsCard";
 // import dummy from "./DummyData";
-
 import { useQuery } from "@apollo/client";
 import { GET_GOAL, GET_ME } from "../../utils/queries";
+import { REMOVE_GOAL } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 // const dayjs = require("dayjs");
 
@@ -15,6 +16,23 @@ export default function Savings() {
   const savingsData = data?.getGoal || [];
   console.log(savingsData);
   console.log(error);
+
+  const [removeGoal, { error: errorRemove }] = useMutation(REMOVE_GOAL);
+
+  const handleDelete = async (savingsID) => {
+    console.log("deleting");
+    try {
+      const { data } = await removeGoal({
+        variables: {
+          savingsID,
+        },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Container
       sx={{
@@ -92,6 +110,8 @@ export default function Savings() {
           amount={goals.goalAmount}
           length={goals.goalLength}
           description={goals.goalDescription}
+          savingsID={goals.savingsID}
+          handleDelete={handleDelete}
         />
       ))}
     </Container>

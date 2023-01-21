@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
 
   type TotalBills {
-    _id: ID
+    billID: ID
     billName: String
     billAmount: Int
     billDueDate: String
@@ -64,11 +64,7 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
-    addBill(
-      billName: String!
-      billAmount: Int!
-      billDueDate: String!
-    ): TotalBills
+    addBill(billName: String, billAmount: Int, billDueDate: String): TotalBills
     addGoal(
       goalAmount: Int
       goalName: String
@@ -76,9 +72,10 @@ const typeDefs = gql`
       goalDescription: String
     ): TotalSavings
 
-    removeGoal(goal: String): TotalSavings
+    removeGoal(savingsID: String): [TotalSavings]
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
     removeExpense(spendingID: String): [TotalSpending]
+    removeBill(billID: String): [TotalBills]
   }
 `;
 

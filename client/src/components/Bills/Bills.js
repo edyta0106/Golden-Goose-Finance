@@ -7,11 +7,29 @@ import BillsCard from "./BillsCard";
 
 import { useQuery } from "@apollo/client";
 import { GET_BILL, GET_ME } from "../../utils/queries";
+import { REMOVE_BILL } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 export default function Bills() {
   const { loading, error, data } = useQuery(GET_BILL);
   const billData = data?.getBill || [];
   console.log(data);
+
+  const [removeBill, { error: errorRemove }] = useMutation(REMOVE_BILL);
+
+  const handleDelete = async (billID) => {
+    console.log("deleting");
+    try {
+      const { data } = await removeBill({
+        variables: {
+          billID,
+        },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <Container
       sx={{
@@ -103,6 +121,8 @@ export default function Bills() {
           dueDate={bills.billDueDate}
           name={bills.billName}
           amount={bills.billAmount}
+          billID={bills.billID}
+          handleDelete={handleDelete}
         />
       ))}
     </Container>

@@ -34,16 +34,8 @@ export const ADD_INCOME = gql`
 `;
 
 export const ADD_BILL = gql`
-  mutation addBill(
-    $billName: String!
-    $billAmount: Int!
-    $billDueDate: String!
-  ) {
-    addBill(
-      billName: $billName
-      billAmount: $billAmount
-      billDueDate: $billDueDate
-    ) {
+  mutation addBill($billName: String!, $billAmount: Int!, $billDueDate: String!) {
+    addBill(billName: $billName, billAmount: $billAmount, billDueDate: $billDueDate) {
       billAmount
       billName
       billDueDate
@@ -52,18 +44,8 @@ export const ADD_BILL = gql`
 `;
 
 export const ADD_GOAL = gql`
-  mutation addGoal(
-    $goalAmount: Int
-    $goalName: String
-    $goalLength: String
-    $goalDescription: String
-  ) {
-    addGoal(
-      goalAmount: $goalAmount
-      goalName: $goalName
-      goalLength: $goalLength
-      goalDescription: $goalDescription
-    ) {
+  mutation addGoal($goalAmount: Int, $goalName: String, $goalLength: String, $goalDescription: String) {
+    addGoal(goalAmount: $goalAmount, goalName: $goalName, goalLength: $goalLength, goalDescription: $goalDescription) {
       goalAmount
       goalName
       goalLength
@@ -72,8 +54,9 @@ export const ADD_GOAL = gql`
   }
 `;
 export const REMOVE_GOAL = gql`
-  mutation removeGoal($goalAmount: Int, $goalName: String, $goalLength: String, $goalDescription: String) {
-    removeGoal(goalAmount: $goalAmount, goalName: $goalName, goalLength: $goalLength, goalDescription: $goalDescription) {
+  mutation removeGoal($savingsID: String) {
+    removeGoal(savingsID: $savingsID) {
+      savingsID
       goalAmount
       goalName
       goalLength
@@ -96,6 +79,17 @@ export const REMOVE_EXPENSE = gql`
       spendingID
       expenseName
       expenseCost
+    }
+  }
+`;
+
+export const REMOVE_BILL = gql`
+  mutation removeBill($billID: String) {
+    removeBill(billID: $billID) {
+      billID
+      billName
+      billAmount
+      billDueDate
     }
   }
 `;

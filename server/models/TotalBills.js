@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require("mongoose");
 
-const BillSchema = new Schema({
+const TotalBillsSchema = new Schema({
   billID: {
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
@@ -27,6 +27,6 @@ const BillSchema = new Schema({
   // },
 });
 
-const Bills = model("Bills", BillSchema);
+const TotalBills = model("TotalBills", TotalBillsSchema);
 
-module.exports = Bills;
+module.exports = TotalBills;
