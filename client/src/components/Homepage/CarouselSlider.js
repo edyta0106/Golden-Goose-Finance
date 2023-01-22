@@ -27,23 +27,14 @@ export default function CarouselSlider() {
     >
       <Slider {...settings}>
         <div>
-<<<<<<< HEAD
-          {/* <img
-            src={photo2}
-=======
           <img
             src={goosepg}
->>>>>>> b240845c9fb34b2e9ef8fca81ea1c182b0b1e6a7
             style={{
               width: "45%",
               height: "100vh",
               margin: "auto",
             }}
-<<<<<<< HEAD
-          /> */}
-=======
           />
->>>>>>> b240845c9fb34b2e9ef8fca81ea1c182b0b1e6a7
         </div>
         <div>
           <img
