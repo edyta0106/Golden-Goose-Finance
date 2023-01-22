@@ -125,13 +125,22 @@ const resolvers = {
         }
       );
     },
-    addBillsTotal: async (parent, args, context) => {
+    addTotalBills: async (parent, args, context) => {
       console.log("in this file");
       const bills = await TotalBills.find({});
       const billAmount = bills.map((bill) => bill.billAmount);
       const total = billAmount.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         0
+      );
+      return await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $set: { totalBills: total },
+        },
+        {
+          new: true,
+        }
       );
     },
     addGoal: async (parent, args, context) => {
