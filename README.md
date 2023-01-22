@@ -39,4 +39,4 @@ The user can sandbox in Apollo and GraphQL to test queries and mutations. MongoD
 
 - [Celin Castro](https://github.com/92castro)
 
-[Screenshot of Deployed Application](./client/public/Screenshot%202023-01-22%20at%203.27.42%20PM.png)
+![Screenshot of Deployed Application](./client/public/Screenshot%202023-01-22%20at%203.27.42%20PM.png)
