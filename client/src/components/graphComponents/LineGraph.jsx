@@ -9,7 +9,7 @@ export const LineGraph = () => {
     labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "August", "September", "Oct", "Nov", "Dec"],
     datasets: [
       {
-        label: "Yearly Fiances ",
+        label: "Yearly Finances ",
         axis: "y",
         data: [2000, 2200, 2500, 2600, 2600, 2000, 2200, 2300, 2700, 2800, 3000, 5000],
         fill: false,

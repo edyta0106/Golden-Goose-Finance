@@ -69,6 +69,7 @@ export default function ButtonAppBar() {
           {Auth.loggedIn() !== true ? (
             <>
               <Menu
+                sx={{ marginRight: "0" }}
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -107,10 +108,6 @@ export default function ButtonAppBar() {
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <Link to="/savings">Savings</Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {/* Create route to link this button */}
-                  <Link to="/settings">Settings</Link>
                 </MenuItem>
                 <MenuItem>
                   <LogoutIcon onClick={logout} />

@@ -74,7 +74,21 @@ export default function SignUp(props) {
             variant="standard"
           />
           <Box textAlign="center">
-            <Button type="submit" sx={{ mt: 5, border: 1 }}>
+            <Button
+              onClick={handleFormSubmit}
+              variant=""
+              sx={{
+                mt: 5,
+                color: "#FFD740",
+                backgroundColor: "rgba(0, 0, 0, 0.87)",
+                border: "none",
+                "&:hover": {
+                  transform: "scale(110%)",
+                  transition: "ease-in-out",
+                  backgroundColor: "rgba(45, 45, 45, 0.87)",
+                },
+              }}
+            >
               Create Account
             </Button>
           </Box>
@@ -83,3 +97,4 @@ export default function SignUp(props) {
     </>
   );
 }
+//
