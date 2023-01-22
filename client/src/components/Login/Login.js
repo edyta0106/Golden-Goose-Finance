@@ -78,6 +78,7 @@ export default function Login() {
           ) : null}
           <Box textAlign="center">
             <Button
+              onClick={handleFormSubmit}
               variant=""
               sx={{
                 mt: 5,
@@ -91,7 +92,7 @@ export default function Login() {
                 },
               }}
             >
-              Create Account
+              Login
             </Button>
           </Box>
         </Box>

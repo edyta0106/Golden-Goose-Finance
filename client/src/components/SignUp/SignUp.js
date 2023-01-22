@@ -75,6 +75,7 @@ export default function SignUp(props) {
           />
           <Box textAlign="center">
             <Button
+              onClick={handleFormSubmit}
               variant=""
               sx={{
                 mt: 5,
@@ -90,7 +91,6 @@ export default function SignUp(props) {
             >
               Create Account
             </Button>
-            ;
           </Box>
         </Box>
       </Container>
