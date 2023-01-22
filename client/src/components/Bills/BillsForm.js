@@ -4,10 +4,6 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
-import dayjs from "dayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { useMutation } from "@apollo/client";
 import { ADD_BILL } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -18,12 +14,6 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function BillsForm() {
-  // const [value, setValue] = React.useState(dayjs);
-
-  // const handleChanges = (newValue) => {
-  //   setValue(newValue);
-  // };
-
   const [formState, setFormState] = useState({
     billName: "",
     billAmount: 0,
@@ -122,18 +112,6 @@ export default function BillsForm() {
             label="Bill Amount"
             variant="standard"
           />
-          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <MobileDatePicker
-              label="Due Date"
-              name="dueDate"
-              value={formState?.billDueDate || ""}
-              onChange={handleChange}
-              inputFormat="MM/DD/YYYY"
-              // value={value}
-              // onChange={handleChanges}
-              renderInput={(params) => <StyledTextField {...params} />}
-            />
-          </LocalizationProvider> */}
           <StyledTextField
             name="billDueDate"
             value={formState?.billDueDate || ""}

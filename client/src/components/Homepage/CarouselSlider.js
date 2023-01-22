@@ -26,16 +26,16 @@ export default function CarouselSlider() {
       }}
     >
       <Slider {...settings}>
-        {/* <div>
-          <img
+        <div>
+          {/* <img
             src={photo2}
             style={{
               width: "100%",
               height: "75vh",
               margin: "auto",
             }}
-          />
-        </div> */}
+          /> */}
+        </div>
         <div>
           <img
             src={photo3}

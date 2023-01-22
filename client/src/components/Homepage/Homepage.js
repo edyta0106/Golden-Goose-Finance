@@ -8,13 +8,10 @@ export default function Homepage() {
   return (
     <>
       <CarouselSlider />
-      {/* <Link to="/"></Link> */}
       <Container sx={{ minHeight: "15vh" }}>
         <Box
           sx={{
             width: "100%",
-            // maxHeight: { xs: 300, md: 167 },
-            // maxWidth: { xs: 320, md: 250 },
           }}
         />
         <Typography align="center" component="p" sx={{ my: 5 }}>

@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SpendingCard from "./SpendingCard";
-// import dummy from "./DummySpending";
 
 import { useQuery } from "@apollo/client";
-import { GET_EXPENSE, GET_ME } from "../../utils/queries";
+import { GET_EXPENSE } from "../../utils/queries";
 import { REMOVE_EXPENSE } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 

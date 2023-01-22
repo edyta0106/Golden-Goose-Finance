@@ -53,7 +53,6 @@ const typeDefs = gql`
 
     getBill: [TotalBills]
   }
-
   type Mutation {
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(

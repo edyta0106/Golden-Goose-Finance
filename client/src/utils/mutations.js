@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 export const ADD_USER = gql`
   mutation AddUser($username: String!, $password: String!, $email: String!) {
     addUser(username: $username, password: $password, email: $email) {
+      token
       user {
         _id
         username
@@ -43,13 +44,13 @@ export const ADD_BILL = gql`
   }
 `;
 
-export const ADD_TOTAL_BILLS = gql`
-  mutation AddTotalBills($totalBills: Int) {
-    addTotalBills(totalBills: $totalBills) {
-      totalBills
-    }
-  }
-`;
+// export const ADD_TOTAL_BILLS = gql`
+//   mutation AddTotalBills($totalBills: Int) {
+//     addTotalBills(totalBills: $totalBills) {
+//       totalBills
+//     }
+//   }
+// `;
 
 export const ADD_GOAL = gql`
   mutation addGoal($goalAmount: Int, $goalName: String, $goalLength: String, $goalDescription: String) {

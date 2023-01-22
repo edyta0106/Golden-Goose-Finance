@@ -10,16 +10,16 @@ const resolvers = {
       if (context.user) {
         const user = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("savings", "spending", "bills");
-
+          .populate("bills")
+          .populate("spending")
+          .populate("savings");
         return user;
       }
       throw new AuthenticationError("No one logged in!");
     },
     getGoal: async (parent, args, context) => {
       console.log("in this file");
-      const goals = await TotalSavings.find({});
-      console.log(goals);
+      const goals = await TotalSavings.find({ _id: context.user._id });
       return goals;
     },
 
@@ -32,26 +32,21 @@ const resolvers = {
     },
     getExpense: async (parent, args, context) => {
       console.log("in this file");
-      const expenses = await TotalSpending.find({});
+      const expenses = await TotalSpending.find({ _id: context.user._id });
       console.log(expenses);
       return expenses;
     },
     getBill: async (parent, args, context) => {
       console.log("in this file");
-      const bills = await TotalBills.find({});
+      const bills = await TotalBills.find({ _id: context.user._id });
       console.log(bills);
       return bills;
     },
-    // getBillsTotal: async (parent, args, context) => {
-    //   console.log("in this file");
-    //   const bills = await TotalBills.find({});
-    //   const billAmount = bills.map((bill) => bill.billAmount);
-    //   const total = billAmount.reduce(
-    //     (accumulator, currentValue) => accumulator + currentValue,
-    //     0
-    //   );
-    //   console.log(total);
-    //   return total;
+    // getTotalBills: async (parent, args, context) => {
+    //      const user = await User.findOne({ _id: context.user._id })
+    //       const total = user.totalBills
+    //       console.log(total);
+    //    return total
     // },
   },
   Mutation: {
@@ -80,7 +75,6 @@ const resolvers = {
         password,
       });
       const token = signToken(user);
-
       return { token, user };
     },
     addIncome: async (parent, { income }, context) => {
@@ -96,23 +90,6 @@ const resolvers = {
         }
       );
     },
-    // addBill: async (parent, { billName, billAmount, billDueDate }, context) => {
-    //   const bill = await TotalBills.create({
-    //     billName,
-    //     billAmount,
-    //     billDueDate,
-    //   });
-    //   console.log(bill);
-    //   return await User.findByIdAndUpdate(
-    //     context.user._id,
-    //     {
-    //       $addToSet: { bills: bill },
-    //     },
-    //     {
-    //       new: true,
-    //     }
-    //   );
-    // },
     addBill: async (parent, args, context) => {
       const newBill = await TotalBills.create(args);
       return await User.findByIdAndUpdate(
@@ -125,24 +102,21 @@ const resolvers = {
         }
       );
     },
-    addTotalBills: async (parent, args, context) => {
-      console.log("in this file");
-      const bills = await TotalBills.find({});
-      const billAmount = bills.map((bill) => bill.billAmount);
-      const total = billAmount.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
-      return await User.findByIdAndUpdate(
-        context.user._id,
-        {
-          $set: { totalBills: total },
-        },
-        {
-          new: true,
-        }
-      );
-    },
+    // addTotalBills: async (parent, args, context) => {
+    //   console.log("in this file");
+    //   let totalSum;
+    //   const bills = await TotalBills.find({});
+    //   const billAmount = bills.map((bill) => (totalSum = 0), bill.billAmount);
+    //   return await User.findByIdAndUpdate(
+    //     context.user._id,
+    //     {
+    //       $set: { totalBills: billAmount},
+    //     },
+    //     {
+    //       new: true,
+    //     }
+    //   );
+    // },
     addGoal: async (parent, args, context) => {
       const newGoal = await TotalSavings.create(args);
 

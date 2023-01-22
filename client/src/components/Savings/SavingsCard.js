@@ -1,8 +1,6 @@
 import React from "react";
 import { Typography, IconButton, Box } from "@mui/material";
 import DoneIcon from "@mui/icons-material/Done";
-// import { REMOVE_GOAL } from "../../utils/mutations";
-// import { useMutation } from "@apollo/client";
 
 export default function SavingsCard({ savingsID, name, amount, length, description, handleDelete }) {
   return (

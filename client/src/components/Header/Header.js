@@ -11,7 +11,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Logo from "./images/goldengoose.PNG";
-import { fontFamily } from "@mui/system";
 
 export default function ButtonAppBar() {
   const logout = (event) => {
@@ -28,12 +27,29 @@ export default function ButtonAppBar() {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: " #28282B", display: "flex", justifyContent: "space-between" }}>
+      <AppBar
+        position="static"
+        style={{
+          background: " #28282B",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            <Box component="img" src={Logo} sx={{ width: "65px" }}></Box>
+            <Link to="/dashboard">
+              <Box component="img" src={Logo} sx={{ width: "65px" }}></Box>
+            </Link>
           </Box>
-          <Typography fontFamily="Nanum Gothic" sx={{ flexGrow: 1, textTransform: "uppercase", color: "#FDD835", fontSize: "18px" }}>
+          <Typography
+            fontFamily="Nanum Gothic"
+            sx={{
+              flexGrow: 1,
+              textTransform: "uppercase",
+              color: "#FDD835",
+              fontSize: "18px",
+            }}
+          >
             Golden Goose Finance
           </Typography>
           <IconButton
