@@ -51,6 +51,8 @@ const typeDefs = gql`
     getExpense: [TotalSpending]
 
     getBill: [TotalBills]
+
+    getBillsTotal: [TotalBills]
   }
 
   type Mutation {

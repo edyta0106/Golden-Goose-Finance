@@ -8,7 +8,9 @@ const resolvers = {
     user: async (parent, args, context) => {
       console.log(context.user);
       if (context.user) {
-        const user = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("savings", "spending", "bills");
+        const user = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate("savings", "spending", "bills");
 
         return user;
       }
@@ -34,11 +36,22 @@ const resolvers = {
       console.log(expenses);
       return expenses;
     },
-
     getBill: async (parent, args, context) => {
       console.log("in this file");
       const bills = await TotalBills.find({});
       console.log(bills);
+      return bills;
+    },
+    getBillsTotal: async (parent, args, context) => {
+      console.log("in this file");
+      const bills = await TotalBills.find({});
+      // console.log(bills);
+      const billAmount = bills.map((bill) => bill.billAmount);
+      const total = billAmount.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      console.log(total);
       return bills;
     },
   },
@@ -130,7 +143,11 @@ const resolvers = {
       if (context.user) {
         const deletedGoal = await TotalSavings.findOneAndDelete({ savingsID });
 
-        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { savings: deletedGoal._id } }, { new: true });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savings: deletedGoal._id } },
+          { new: true }
+        );
 
         const savings = await TotalSavings.find({});
         return savings;
@@ -154,7 +171,11 @@ const resolvers = {
           spendingID,
         });
 
-        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { spending: deletedExpense._id } }, { new: true });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { spending: deletedExpense._id } },
+          { new: true }
+        );
 
         const expenses = await TotalSpending.find({});
         return expenses;
@@ -166,7 +187,11 @@ const resolvers = {
           billID,
         });
 
-        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { bills: deletedBill._id } }, { new: true });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bills: deletedBill._id } },
+          { new: true }
+        );
 
         const bills = await TotalBills.find({});
         return bills;
