@@ -30,8 +30,8 @@ export default function CarouselSlider() {
           <img
             src={goosepg}
             style={{
-              width: "60%",
-              height: "75vh",
+              width: "45%",
+              height: "100vh",
               margin: "auto",
             }}
           />
@@ -39,19 +39,19 @@ export default function CarouselSlider() {
         <div>
           <img
             src={expensepg}
-            style={{ width: "60%", height: "75vh", margin: "auto" }}
+            style={{ width: "45%", height: "100vh", margin: "auto" }}
           />
         </div>
         <div>
           <img
             src={savingspg}
-            style={{ width: "60%", height: "75vh", margin: "auto" }}
+            style={{ width: "45%", height: "100vh", margin: "auto" }}
           />
         </div>
         <div>
           <img
             src={billspg}
-            style={{ width: "60%", height: "75vh", margin: "auto" }}
+            style={{ width: "45%", height: "100vh", margin: "auto" }}
           />
         </div>
       </Slider>

@@ -28,12 +28,27 @@ export default function ButtonAppBar() {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: " #28282B", display: "flex", justifyContent: "space-between" }}>
+      <AppBar
+        position="static"
+        style={{
+          background: " #28282B",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
             <Box component="img" src={Logo} sx={{ width: "65px" }}></Box>
           </Box>
-          <Typography fontFamily="Nanum Gothic" sx={{ flexGrow: 1, textTransform: "uppercase", color: "#FDD835", fontSize: "18px" }}>
+          <Typography
+            fontFamily="Nanum Gothic"
+            sx={{
+              flexGrow: 1,
+              textTransform: "uppercase",
+              color: "#FDD835",
+              fontSize: "18px",
+            }}
+          >
             Golden Goose Finance
           </Typography>
           <IconButton
@@ -92,10 +107,6 @@ export default function ButtonAppBar() {
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <Link to="/savings">Savings</Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  {/* Create route to link this button */}
-                  <Link to="/settings">Settings</Link>
                 </MenuItem>
                 <MenuItem>
                   <LogoutIcon onClick={logout} />
