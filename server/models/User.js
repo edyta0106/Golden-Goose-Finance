@@ -22,6 +22,9 @@ const userSchema = new Schema({
   income: {
     type: Number,
   },
+  totalBills: {
+    type: Number,
+  },
   bills: [
     {
       type: Schema.Types.ObjectId,

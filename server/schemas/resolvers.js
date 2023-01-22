@@ -42,18 +42,17 @@ const resolvers = {
       console.log(bills);
       return bills;
     },
-    getBillsTotal: async (parent, args, context) => {
-      console.log("in this file");
-      const bills = await TotalBills.find({});
-      // console.log(bills);
-      const billAmount = bills.map((bill) => bill.billAmount);
-      const total = billAmount.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
-      console.log(total);
-      return bills;
-    },
+    // getBillsTotal: async (parent, args, context) => {
+    //   console.log("in this file");
+    //   const bills = await TotalBills.find({});
+    //   const billAmount = bills.map((bill) => bill.billAmount);
+    //   const total = billAmount.reduce(
+    //     (accumulator, currentValue) => accumulator + currentValue,
+    //     0
+    //   );
+    //   console.log(total);
+    //   return total;
+    // },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -124,6 +123,15 @@ const resolvers = {
         {
           new: true,
         }
+      );
+    },
+    addBillsTotal: async (parent, args, context) => {
+      console.log("in this file");
+      const bills = await TotalBills.find({});
+      const billAmount = bills.map((bill) => bill.billAmount);
+      const total = billAmount.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
       );
     },
     addGoal: async (parent, args, context) => {
