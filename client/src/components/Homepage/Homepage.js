@@ -24,11 +24,16 @@ export default function Homepage() {
         >
           <Link to="/signup">
             <Button
-              variant="outlined"
+              variant=""
               sx={{
-                bgcolor: "gray",
-                color: "white",
+                color: "#FFD740",
+                backgroundColor: "rgba(0, 0, 0, 0.87)",
                 border: "none",
+                "&:hover": {
+                  transform: "scale(110%)",
+                  transition: "ease-in-out",
+                  backgroundColor: "rgba(45, 45, 45, 0.87)",
+                },
               }}
             >
               Sign Up
@@ -36,12 +41,17 @@ export default function Homepage() {
           </Link>
           <Link to="/login">
             <Button
-              variant="outlined"
+              variant=""
               sx={{
-                bgcolor: "gray",
-                color: "white",
-                border: "none",
+                color: "#FFD740",
+                backgroundColor: "rgba(0, 0, 0, 0.87)",
                 marginLeft: "1.5rem",
+                border: "none",
+                "&:hover": {
+                  transform: "scale(110%)",
+                  transition: "ease-in-out",
+                  backgroundColor: "rgba(45, 45, 45, 0.87)",
+                },
               }}
             >
               Login
