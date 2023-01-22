@@ -17,11 +17,6 @@ export default function Homepage() {
             // maxWidth: { xs: 320, md: 250 },
           }}
         />
-        <Typography align="center" component="p" sx={{ my: 5 }}>
-          Saving up for that dream vacation? Paying down some debt? Setting up a
-          budget just got easier. The Golden Goose Finance app allows you to
-          track all your expenses on the go with just a few clicks.
-        </Typography>
         <Stack
           direction="horizontal"
           justifyContent="center"

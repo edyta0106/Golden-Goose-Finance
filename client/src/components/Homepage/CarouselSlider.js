@@ -3,10 +3,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Box } from "@mui/system";
-// import photo2 from "../images/photo2.jpg";
-import photo3 from "../images/photo3.jpg";
-import photo4 from "../images/photo4.jpg";
-import photo5 from "../images/photo5.jpg";
+import billspg from "../images/bills3.jpg";
+import expensepg from "../images/expensespg3.jpg";
+import savingspg from "../images/savingspg3.jpg";
+import goosepg from "../images/goosepg2.jpg";
 
 export default function CarouselSlider() {
   var settings = {
@@ -26,32 +26,32 @@ export default function CarouselSlider() {
       }}
     >
       <Slider {...settings}>
-        {/* <div>
+        <div>
           <img
-            src={photo2}
+            src={goosepg}
             style={{
-              width: "100%",
+              width: "60%",
               height: "75vh",
               margin: "auto",
             }}
           />
-        </div> */}
+        </div>
         <div>
           <img
-            src={photo3}
-            style={{ width: "100%", height: "75vh", margin: "auto" }}
+            src={expensepg}
+            style={{ width: "60%", height: "75vh", margin: "auto" }}
           />
         </div>
         <div>
           <img
-            src={photo4}
-            style={{ width: "100%", height: "75vh", margin: "auto" }}
+            src={savingspg}
+            style={{ width: "60%", height: "75vh", margin: "auto" }}
           />
         </div>
         <div>
           <img
-            src={photo5}
-            style={{ width: "100%", height: "75vh", margin: "auto" }}
+            src={billspg}
+            style={{ width: "60%", height: "75vh", margin: "auto" }}
           />
         </div>
       </Slider>
