@@ -53,6 +53,7 @@ export default function ButtonAppBar() {
           {Auth.loggedIn() !== true ? (
             <>
               <Menu
+                sx={{ marginRight: "0" }}
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
