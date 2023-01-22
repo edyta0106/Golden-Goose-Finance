@@ -41,3 +41,11 @@ export const GET_BILL = gql`
     }
   }
 `;
+
+// export const GET_TOTAL_BILLS = gql`
+//   query User {
+//     user {
+//       totalBills
+//     }
+//   }
+// `;

@@ -1,20 +1,11 @@
-// rfc command for react function
-
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { Box, Paper, Grid, Container, Button, Typography, Modal, TextField } from "@mui/material";
-import { MdOutlineSavings } from "react-icons/md";
-import { Stack } from "@mui/system";
 import { ADD_INCOME } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { TheGraphComponent } from "../graphComponents/TheGraphComponent";
-
-//1. create use state - income, setIncome
-//2. build a function that setsIncome when modal is open
-//3. create query to find income on user context
-//4. pass that query results to income
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#FAF9F6",

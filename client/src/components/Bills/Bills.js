@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, Container, IconButton, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import BillsCard from "./BillsCard";
-// import dummy from "./DummyBills";
 
 import { useQuery } from "@apollo/client";
-import { GET_BILL, GET_ME } from "../../utils/queries";
+import { GET_BILL } from "../../utils/queries";
 import { REMOVE_BILL } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 export default function Bills() {
   const { loading, error, data } = useQuery(GET_BILL);
   const billData = data?.getBill || [];
-  console.log(data);
 
   const [removeBill, { error: errorRemove }] = useMutation(REMOVE_BILL);
 
@@ -98,7 +96,6 @@ export default function Bills() {
             paddingBottom: "15%",
           }}
         >
-          $950.00
         </Typography>
         {/* Button to Add Bill */}
         <Link to="/billsform">
@@ -126,62 +123,5 @@ export default function Bills() {
         />
       ))}
     </Container>
-    // <Container sx={{ textAlign: "center" }}>
-    //   <Link to="/bills"></Link>
-    //   <h2 className="bH2">Monthly Bills</h2>
-    //   <Typography variant="h4" component="p">
-    //     $500
-    //   </Typography>
-    //   <Button
-    //     sx={{ my: 5, color: "black", bgcolor: "lightgray", border: "none" }}
-    //     variant="outlined"
-    //   >
-    //     Add Bill
-    //   </Button>
-    //   <Grid item xs={12} md={6} sx={{ border: "black solid" }}>
-    //     <List>
-    //       <ListItem
-    //         secondaryAction={
-    //           <IconButton edge="end" aria-label="delete">
-    //             <DeleteIcon />
-    //           </IconButton>
-    //         }
-    //       >
-    //         <ListItemText primary="Rent" />
-    //         <ListItemText primary="$950" />
-    //       </ListItem>
-    //       <ListItem
-    //         secondaryAction={
-    //           <IconButton edge="end" aria-label="delete">
-    //             <DeleteIcon />
-    //           </IconButton>
-    //         }
-    //       >
-    //         <ListItemText primary="Netflix" />
-    //         <ListItemText primary="$15" />
-    //       </ListItem>
-    //       <ListItem
-    //         secondaryAction={
-    //           <IconButton edge="end" aria-label="delete">
-    //             <DeleteIcon />
-    //           </IconButton>
-    //         }
-    //       >
-    //         <ListItemText primary="Verizon" />
-    //         <ListItemText primary="$75" />
-    //       </ListItem>
-    //       <ListItem
-    //         secondaryAction={
-    //           <IconButton edge="end" aria-label="delete">
-    //             <DeleteIcon />
-    //           </IconButton>
-    //         }
-    //       >
-    //         <ListItemText primary="Loan" />
-    //         <ListItemText primary="$250" />
-    //       </ListItem>
-    //     </List>
-    //   </Grid>
-    // </Container>
   );
 }

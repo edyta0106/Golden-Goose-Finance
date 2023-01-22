@@ -10,6 +10,7 @@ const typeDefs = gql`
     savings: [TotalSavings]
     spending: [TotalSpending]
     income: Int
+    totalBills: Int
   }
 
   type TotalBills {
@@ -52,7 +53,6 @@ const typeDefs = gql`
 
     getBill: [TotalBills]
   }
-
   type Mutation {
     addUser(username: String!, password: String!, email: String!): Auth
     updateUser(
@@ -65,13 +65,13 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addIncome(income: Int): User
     addBill(billName: String, billAmount: Int, billDueDate: String): TotalBills
+    addTotalBills(totalBills: Int): User
     addGoal(
       goalAmount: Int
       goalName: String
       goalLength: String
       goalDescription: String
     ): TotalSavings
-
     removeGoal(savingsID: String): [TotalSavings]
     addExpense(expenseName: String, expenseCost: Int): TotalSpending
     removeExpense(spendingID: String): [TotalSpending]

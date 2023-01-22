@@ -91,7 +91,6 @@ export default function SavingsForm() {
               fontWeight: "bolder",
             }}
           >
-            {/* dayjs().format(MM/DD/YYYY) */}
             Add Goal
           </Typography>
         </Box>

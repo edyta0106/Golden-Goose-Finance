@@ -17,14 +17,6 @@ const TotalBillsSchema = new Schema({
     type: String,
     required: true,
   },
-  // billType: {
-  //   type: String,
-  //   required: true,
-  // },
-  // billCategory: {
-  //   type: String,
-  //   required: true,
-  // },
 });
 
 const TotalBills = model("TotalBills", TotalBillsSchema);

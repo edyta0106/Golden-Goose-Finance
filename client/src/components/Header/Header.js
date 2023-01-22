@@ -11,7 +11,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Logo from "./images/goldengoose.PNG";
-import { fontFamily } from "@mui/system";
 
 export default function ButtonAppBar() {
   const logout = (event) => {
@@ -38,7 +37,9 @@ export default function ButtonAppBar() {
       >
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            <Box component="img" src={Logo} sx={{ width: "65px" }}></Box>
+            <Link to="/dashboard">
+              <Box component="img" src={Logo} sx={{ width: "65px" }}></Box>
+            </Link>
           </Box>
           <Typography
             fontFamily="Nanum Gothic"

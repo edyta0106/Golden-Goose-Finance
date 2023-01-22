@@ -32,7 +32,7 @@ export default function SpendingCard({ spendingID, name, cost, handleDelete }) {
           fontSize: "150%",
         }}
       >
-        {cost}
+        ${cost}
       </Typography>
       <IconButton onClick={() => handleDelete(spendingID)} edge="end" aria-label="delete">
         <DeleteIcon sx={{ color: "white" }} />

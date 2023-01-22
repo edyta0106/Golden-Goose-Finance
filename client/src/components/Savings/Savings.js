@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import SavingsCard from "./SavingsCard";
-// import dummy from "./DummyData";
 import { useQuery } from "@apollo/client";
-import { GET_GOAL, GET_ME } from "../../utils/queries";
+import { GET_GOAL } from "../../utils/queries";
 import { REMOVE_GOAL } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-
-// const dayjs = require("dayjs");
 
 export default function Savings() {
   const { loading, error, data } = useQuery(GET_GOAL);
@@ -77,7 +74,6 @@ export default function Savings() {
             fontWeight: "bolder",
           }}
         >
-          {/* dayjs().format(MM/DD/YYYY) */}
           Savings Goals
         </Typography>
       </Box>
