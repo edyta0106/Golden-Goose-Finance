@@ -98,7 +98,6 @@ export default function Spending() {
             paddingBottom: "15%",
           }}
         >
-          $321.45
         </Typography>
         {/* Button to Add Expense */}
         <Link to="/spendingform">

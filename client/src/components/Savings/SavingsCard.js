@@ -40,7 +40,7 @@ export default function SavingsCard({ savingsID, name, amount, length, descripti
           fontSize: "130%",
         }}
       >
-        {amount}
+        ${amount}
       </Typography>
 
       <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(savingsID)}>
