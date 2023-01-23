@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, TextField, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import { Box } from "@mui/system";
@@ -15,6 +15,7 @@ const StyledTextField = styled(TextField)({
 export default function SignUp(props) {
   const [formState, setFormState] = useState({ username: "", email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
+  let history = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +26,7 @@ export default function SignUp(props) {
         },
       });
       const token = mutationResponse.data.addUser.token;
-      Auth.login(token);
+      Auth.login(token, history);
     } catch (error) {
       console.log(JSON.stringify(error));
     }
