@@ -2,7 +2,7 @@ import { Container, TextField, Button, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_GOAL } from "../../utils/mutations";
@@ -14,6 +14,7 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SavingsForm() {
+  let redirect = useNavigate();
   const [formState, setFormState] = useState({
     goalName: "",
     goalAmount: 0,
@@ -40,7 +41,8 @@ export default function SavingsForm() {
       });
       console.log(data);
       setFormState();
-      window.location.assign("/savings");
+      redirect("/savings");
+      window.location.reload();
     } catch (error) {
       console.log(JSON.stringify(error));
     }

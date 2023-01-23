@@ -2,7 +2,7 @@ import { Container, TextField, Button, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_BILL } from "../../utils/mutations";
@@ -13,7 +13,9 @@ const StyledTextField = styled(TextField)({
   marginTop: "1.2rem",
 });
 
+
 export default function BillsForm() {
+  let redirect = useNavigate();
   const [formState, setFormState] = useState({
     billName: "",
     billAmount: 0,
@@ -37,8 +39,9 @@ export default function BillsForm() {
         },
       });
       console.log(data);
+      redirect("/bills");
       setFormState();
-      window.location.assign("/bills");
+      window.location.reload()
     } catch (error) {
       console.log(JSON.stringify(error));
     }
