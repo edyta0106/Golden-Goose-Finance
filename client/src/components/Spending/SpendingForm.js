@@ -2,7 +2,7 @@ import { Container, TextField, Button, Typography } from "@mui/material";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { ADD_EXPENSE } from "../../utils/mutations";
@@ -14,6 +14,7 @@ const StyledTextField = styled(TextField)({
 });
 
 export default function SpendingForm() {
+  let redirect = useNavigate()
   const [formState, setFormState] = useState({ expenseName: "", expenseCost: 0 });
 
   const [addExpense] = useMutation(ADD_EXPENSE);
@@ -31,7 +32,8 @@ export default function SpendingForm() {
       });
       console.log(data);
       setFormState();
-      window.location.assign("/spending");
+      redirect("/spending");
+      window.location.reload();
     } catch (error) {
       console.log(JSON.stringify(error));
     }
